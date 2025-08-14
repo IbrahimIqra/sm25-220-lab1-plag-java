@@ -1,0 +1,134 @@
+<html>
+<head>
+<title>A1_Sec07_24301179_Mashkurul-Alam.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec07_24301179_Mashkurul-Alam.txt<p></p><pre>
+// Assignment 1
+public static void mostWater( Integer[] height ){
+  int mArea=0;
+  int L=0;
+<a name="0"></a><font color="#FF0000"><a href="match350-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_17.gif"/></a>
+
+  int R=height.length-1;
+  while(L&lt;R){
+    int H=0;
+    if(height[L]&lt;height[R]){
+      H=height[L];
+    }
+    else{
+      H=height[R];
+    }
+    int wdt=R-L;
+    int area=H*wdt;
+    if(area&gt;mArea){
+      mArea=area;
+    }
+    if(height[L]&lt;height[R]){
+      L++;
+    }
+    else{
+      R--;
+    }
+  }
+  System.out.println(mArea);
+}
+
+
+// Assignment 2
+  public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+    int row=matrix.length;
+    int col=matrix[0].length;
+</font><a name="1"></a><font color="#00FF00"><a href="match350-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_8.gif"/></a>
+
+    int rotate=(examWeek-1)%row;
+    
+    for(int k=0;k&lt;rotate;k++){
+      String[]l_Row=matrix[row-1];
+      for(int i=row-1;i&gt;0;i--){
+        matrix[i]=matrix[i-1];
+      }
+      matrix[0]=l_Row;
+</font><a name="6"></a><font color="#00FF00"><a href="match350-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+    }
+    int aA_row=0;
+    for(int i=0;i&lt;row;i++){
+      for(int j=0;j&lt;col;j++){
+</font>        if("AA".equals(matrix[i][j])){
+          aA_row=i+1;
+        }
+      }
+    }
+<a name="3"></a><font color="#00FFFF"><a href="match350-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+    for(int i=0;i&lt;row;i++){
+      System.out.print(" | ");
+      for(int j=0;j&lt;col;j++){
+        System.out.print(matrix[i][j]+" | ");
+      }
+      System.out.println();
+</font>    }
+<a name="2"></a><font color="#0000FF"><a href="match350-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_6.gif"/></a>
+
+    return aA_row;
+  }
+
+
+//Assignment 3
+  public static Integer[][] compressMatrix( Integer[][] matrix ){
+    int row=matrix.length;
+    int col=matrix[0].length;
+    Integer[][]matrix2 = new Integer[row/2][col/2];
+</font><a name="4"></a><font color="#FF00FF"><a href="match350-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_5.gif"/></a>
+
+    
+    for(int i=0;i&lt;row;i+=2){
+      for(int j=0;j&lt;col; j+=2){
+        int s= matrix[i][j]+matrix[i+1][j]+matrix[i][j+1]+matrix[i+1][j+1];
+</font><a name="5"></a><font color="#FF0000"><a href="match350-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+        matrix2[i/2][j/2]=s;
+      }
+    }
+    return matrix2;
+  }
+
+
+//Assignment 4
+  public static void playGame( Integer[][] arena ){
+    int row=arena.length;
+    int col=arena[0].length;
+</font>    int need_point=10;
+    int point=0;
+    
+    for(int i=0;i&lt;row;i++){
+      for(int j=0;j&lt;col;j++){
+        int num=arena[i][j];
+        if(num!=0 &amp;&amp; num%50==0){
+          if(i&gt;0 &amp;&amp; arena[i-1][j]==2){
+            point++;
+          }
+          if(i&lt;row-1 &amp;&amp; arena[i+1][j]==2){
+            point++;
+          }
+          if(j&gt;0 &amp;&amp; arena[i][j-1]==2){
+            point++;
+          }
+          if(j&lt;col-1 &amp;&amp; arena[i][j+1]==2){
+            point++;
+          }
+        }
+      }
+      point=point*2;
+      if(point&lt;need_point){
+        System.out.println("Points Gained: "+point+". Your team is out.");
+      }
+      else{
+        System.out.println("Points Gained: "+point+". Your team has survived the game.");
+      }
+    }
+</pre>
+</body>
+</html>

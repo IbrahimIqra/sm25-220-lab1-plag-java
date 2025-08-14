@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>A1_Sec02_24101266_SAIYARA-HASAN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec02_24101266_SAIYARA-HASAN.txt<p></p><pre>
+CSE220 LAB ASSIGNMENT 1:
+
+#class AssgnTask1{
+    public static void mostWater( Integer[] height ){     
+      int waterArea = 0;  //val of max area of water 
+     // water may overflow if container is slant (question hint)
+        int min_h;  //var for height compar.
+<a name="6"></a><font color="#00FF00"><a href="match340-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+        for(int i=0;i&lt;height.length;i++){  //o.p start from left of graph
+            for(int j=i+1;j&lt;height.length;j++){  //i.p start from +1 of left
+</font>                int breadth = j-i;  //for area calc.
+<a name="3"></a><font color="#00FFFF"><a href="match340-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+                if(height[i]&lt;height[j]){  //compares to find smaller height 
+                    min_h = height[i]; 
+                }else{
+                    min_h = height[j];
+                }
+           //var. needed for area calc. 
+                int area = breadth*min_h;  //ini area
+                if(area&gt;waterArea){  //compares of areas
+                    waterArea = area;
+                }}}                  
+        System.out.println(waterArea);
+</font>    }
+
+<a name="4"></a><font color="#FF00FF"><a href="match340-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+#class AssgnTask2{
+    public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+    int rows = matrix.length; 
+    int columns = matrix[0].length; 
+</font>    int friendSeat = 0;  // var for seat.
+    //hint from question: rotation=week-1
+    //column stays constant, row shifts for rotations
+    //no column(no printing)
+<a name="1"></a><font color="#00FF00"><a href="match340-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_12.gif"/></a>
+
+    for(int i=0;i&lt;examWeek-1;i++){
+            String[] store = matrix[rows-1];  //empty array to store last row 
+            for(int j = rows-1;j&gt;0;j--){  
+                matrix[j] = matrix[j-1];  // matrix shifts downw
+            }
+            matrix[0]= store;  //last row goes to first 
+        }
+    //print entire matrix,rows and cols always needed
+    for(int i=0;i&lt;rows;i++){
+        for(int j=0;j&lt;columns;j++){
+            System.out.print("| "+matrix[i][j]+"  ");
+</font>        }
+<a name="5"></a><font color="#FF0000"><a href="match340-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+        System.out.println("|");
+    }
+    //find the friend's posi
+    for(int i=0;i&lt;rows;i++){
+        for(int j=0;j&lt;columns;j++){
+</font>            if(matrix[i][j]=="AA"){
+                friendSeat = i + 1;
+            }}}
+   return friendSeat;
+}
+
+#class AssgnTask3{
+<a name="0"></a><font color="#FF0000"><a href="match340-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_13.gif"/></a>
+
+    public static Integer[][] compressMatrix( Integer[][] matrix ){
+    int rows = matrix.length;
+    int columns = matrix[0].length;
+    //new array = half of the given
+    Integer[][] output = new Integer[rows/2][columns/2]; 
+    //hint: summation of (i,j),(i+1,j),(i,j+1),(i+1,j+1)
+    //increase will be +2 bcs matrix compression is 2x2
+    for (int i=0;i&lt;rows;i+=2){ 
+        for (int j=0;j&lt;columns;j+=2){
+           int sum1 =matrix[i][j];
+</font>           int sum2= matrix[i+1][j];
+           int sum3 = matrix[i][j+1];
+           int sum4 =matrix[i+1][j+1];
+           int totalSum = sum1+sum2+sum3+sum4;          
+           output[i][j] = totalSum; //since output matrix's half the given
+        }}  
+    return output;
+}
+
+#class AssgnTask4{
+<a name="2"></a><font color="#0000FF"><a href="match340-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_7.gif"/></a>
+
+    public static void playGame(Integer[][] arena){
+    int rows = arena.length;         
+    int columns = arena[0].length;      
+    int points = 0; //to calc. team points             
+    for(int i=0;i&lt;rows;i++){ 
+        for(int j=0; j&lt;columns;j++){
+</font>            int position = arena[i][j]; //to find position of players
+            if(position!=0 &amp;&amp; position!=1 &amp;&amp; position%50==0){ //finding multiples of 50 and avoid 0 1
+            if(j&gt;0 &amp;&amp; arena[i][j-1]==2){  //chk left
+              points+=2;
+            }   
+            if(j&lt;columns-1 &amp;&amp; arena[i][j+1]==2){  //chk right
+              points+=2;
+            }     
+            if(i&gt;0 &amp;&amp; arena[i-1][j]==2){  //chk up
+              points+=2;
+            }           
+            if(i&lt;rows-1 &amp;&amp; arena[i+1][j]==2){  //chk down
+              points+=2;
+            }                    
+            }
+      }}
+    //Checking if team has survived or not
+    if(points&lt;10){
+        System.out.println("Points Gained: "+points+"." + "Your team is out.");
+    }else{
+        System.out.println("Points Gained: "+points+"." + "Your team has survived the game.");
+    }
+    }
+
+</pre>
+</body>
+</html>

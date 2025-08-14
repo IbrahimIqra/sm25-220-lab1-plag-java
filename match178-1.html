@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>A1_Sec21_24101546_Abdulla-Al-Fahad.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec03_24101261_S.M-Nafeu-Al-Sikder.txt<p></p><pre>
+class AssgnTask1{
+  public static void mostWater(Integer[] height) {
+    class Arr {
+      public void print(Integer[] arr) {
+        for (int i = 0; i &lt; arr.length; i++) {
+          System.out.print(arr[i]);
+          if (i != arr.length - 1) {
+            System.out.print(", ");
+          }
+        }
+      }
+    }
+    
+    int left = 0;
+    int right = height.length - 1;
+    int area = 0;
+    
+    while (left &lt; right) {
+<a name="4"></a><font color="#FF00FF"><a href="match178-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_3.gif"/></a>
+
+      int newHgt;
+      if (height[left] &lt; height[right]) {
+        newHgt = height[left];
+      } else {
+        newHgt = height[right];
+      }
+      
+      int wid = right - l;
+</font>      int newArea = newHgt * wid;
+      
+      if (newArea &gt; area) {
+        area = newArea;
+      }
+      
+      if (height[left] &lt; height[right]) {
+        left++;
+      } else {
+        right++;
+      }
+    }
+    
+    System.out.println(area);
+  }
+  
+  
+ class AssgnTask2{
+  public static Integer rowRotation(Integer examWeek, String[][] matrix) {
+    class Arr {
+      public void print2D(String[][] matrix) {
+<a name="6"></a><font color="#00FF00"><a href="match178-0.html#6" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+        for (int row = 0; row &lt; matrix.length; row++) {
+          for (int col = 0; col &lt; matrix[row].length; col++) {
+</font>            System.out.print("| " + matrix[row][col] + "  ");
+          }
+          System.out.println("|");
+        }
+      }
+    }
+    int rows = 6;
+    int cols = 5;
+    int rot = examWeek % rows;
+    
+    for (int col = 0; col &lt; cols; col++) {
+      for (int row = 0; row &lt; rot; row++) {
+        String temp = matrix[rows - 1][col];
+        for (int i = rows - 1; i &gt; 0; i--) {
+          matrix[i][col] = matrix[i - 1][col];
+        }
+        matrix[0][col] = temp;
+      }
+    }
+    
+    for (int row = 0; row &lt; rows; row++) {
+      for (int col = 0; col &lt; cols; col++) {
+        System.out.print("| " + matrix[row][col] + "  ");
+      }
+      System.out.println("|");
+    }
+    
+    for (int row = 0; row &lt; rows; row++) {
+      for (int col = 0; col &lt; cols; col++) {
+        if (matrix[row][col].equals("AA")) {
+          return row + 1;
+        }
+      }
+    }
+    return -1;
+  }
+  
+  class AssgnTask3{
+  public static Integer[][] compressMatrix( Integer[][] matrix ){
+    class Arr {
+      public static void print2D(Integer[][] matrix) {
+<a name="2"></a><font color="#0000FF"><a href="match178-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+        for (int i = 0; i &lt; matrix.length; i++) {
+          System.out.print("| ");
+          for (int j = 0; j &lt; matrix[i].length; j++) {
+            System.out.print(matrix[i][j] + " ");
+          }
+          System.out.println("|");
+</font>        }
+      }
+    }
+<a name="1"></a><font color="#00FF00"><a href="match178-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_9.gif"/></a>
+
+    int rows = matrix.length;
+    int cols = matrix[0].length;
+    int newRows = rows / 2;
+    int newCols = cols / 2;
+    Integer[][] compressed = new Integer[newRows][newCols];
+    for (int i = 0; i &lt; rows; i += 2) {
+      for (int j = 0; j &lt; cols; j += 2) {
+        int sum = matrix[i][j] + matrix[i][j+1] +
+</font><a name="5"></a><font color="#FF0000"><a href="match178-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+          matrix[i+1][j] + matrix[i+1][j+1];
+        compressed[i/2][j/2] = sum;
+      }
+    }
+    return compressed;
+</font>  }
+}
+
+class AssgnTask4 {
+<a name="3"></a><font color="#00FFFF"><a href="match178-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+  public static void playGame(Integer[][] arena) {
+    int rows = arena.length;
+    int cols = arena[0].length;
+    int points = 0;
+    for (int i = 0; i &lt; rows; i++) {
+      for (int j = 0; j &lt; cols; j++) {
+</font>        int val = arena[i][j];
+<a name="0"></a><font color="#FF0000"><a href="match178-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_9.gif"/></a>
+
+        if (val &gt; 0 &amp;&amp; val % 50 == 0) {
+          if (i &gt; 0 &amp;&amp; arena[i - 1][j] == 2){ 
+            points += 2;
+          }
+          if (i &lt; rows - 1 &amp;&amp; arena[i + 1][j] == 2) {
+            points += 2;
+          }
+          if (j &gt; 0 &amp;&amp; arena[i][j - 1] == 2){ 
+            points += 2;
+          }
+          if (j &lt; cols - 1 &amp;&amp; arena[i][j + 1] == 2){
+            points += 2;
+</font>          }
+        }
+      }
+      
+      System.out.print("Points Gained: " + points + ". ");
+      System.out.println(points &gt;= 10 ? "Your team has survived the game." : "Your team is out.");
+    }
+    
+    
+    class Arr {
+      public void print2D(Integer[][] matrix) {
+        for (int i = 0; i &lt; matrix.length; i++) {
+          System.out.print("| ");
+          for (int j = 0; j &lt; matrix[i].length; j++) {
+            System.out.printf("%-4d", matrix[i][j]);
+          }
+          System.out.println("|");
+        }
+      }
+    }
+  }
+</pre>
+</body>
+</html>

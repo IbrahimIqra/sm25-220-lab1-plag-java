@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>A1_Sec26_24201125_Joyita-Saha.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec26_24201125_Joyita-Saha.txt<p></p><pre>
+TASK 1
+<a name="4"></a><font color="#FF00FF"><a href="match183-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+public static void mostWater( Integer[] height ){
+        int left=0;
+        int right=height.length-1;
+        int maxarea=0;
+        
+        while(left&lt;right){
+            int h;
+</font>            if(height[left]&lt;height[right]){
+                h=height[left];}
+            else{
+                h=height[right];}
+             int bre=right-left;
+            int area =h*bre;
+        if(area&gt;maxarea){
+<a name="7"></a><font color="#0000FF"><a href="match183-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+                maxarea=area;}
+           if(height[left]&lt;height[right]){
+                left++;}
+            else{
+                right--;}}
+        System.out.println(maxarea);
+</font>                
+       
+
+    }
+
+TASK 2
+ public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+        int found=-1;
+            
+   int row= matrix.length;
+      int col= matrix[0].length;
+<a name="1"></a><font color="#00FF00"><a href="match183-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_10.gif"/></a>
+
+      int rotation=(examWeek-1)%row;
+      
+      for(int i=0;i&lt;rotation;i++){
+          String[] endrow=matrix[row-1];
+          for(int j=row-1;j&gt;0;j--){
+              matrix[j]=matrix[j-1];}
+          matrix[0]= endrow;}
+                                   
+      
+      for(int i=0;i&lt;row;i++){
+</font>      for(int j=0;j&lt;col; j++){ 
+          if ("AA".equals(matrix[i][j])){
+              found=i+1;
+              break;}}}
+
+
+TASK 3
+<a name="6"></a><font color="#00FF00"><a href="match183-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_4.gif"/></a>
+
+ public static Integer[][] compressMatrix( Integer[][] matrix ){
+        int row=matrix.length;
+         int col=matrix[0].length;
+</font>       int newrow=row/2;
+        int newcol=col/2;
+<a name="2"></a><font color="#0000FF"><a href="match183-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_6.gif"/></a>
+
+      Integer[][] comp= new Integer[newrow][newcol];
+        for(int i=0;i&lt;row;i+=2){
+            for(int j=0;j&lt;col;j+=2){
+                int sum=matrix[i][j]+ matrix[i+1][j]+matrix[i][j+1]+matrix[i+1][j+1];
+</font><a name="5"></a><font color="#FF0000"><a href="match183-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+                comp[i/2][j/2]=sum;}}
+        return comp;
+</font>    }
+
+
+TASK 4
+<a name="0"></a><font color="#FF0000"><a href="match183-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_12.gif"/></a>
+
+public static void playGame( Integer[][] arena ){
+int row=arena.length;
+int col=arena[0].length;
+int tpoint=0;
+
+for(int i=0;i&lt;row;i++){
+    for(int j=0;j&lt;col;j++){
+        if(arena[i][j]%50==0&amp;&amp;arena[i][j]!=0){
+</font>            int point=0;
+            
+<a name="3"></a><font color="#00FFFF"><a href="match183-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_6.gif"/></a>
+
+            if(i&gt;0&amp;&amp;arena[i-1][j]==2){
+                point+=2;}
+            if(j&gt;0&amp;&amp;arena[i][j-1]==2){
+                point+=2;}
+            if(i&lt;row-1&amp;&amp;arena[i+1][j]==2){
+</font>                point+=2;}
+           if(j&lt;col-1&amp;&amp;arena[i][j+1]==2){
+                point+=2;}
+            
+            tpoint+=point;}}}
+
+<a name="8"></a><font color="#00FFFF"><a href="match183-1.html#8" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+System.out.println("Points Gained "+tpoint+".");
+if(tpoint&gt;=10){
+    System.out.println("Your team has survived the game");}
+    else{
+        System.out.println("your team is  out.");}}
+</font></pre>
+</body>
+</html>

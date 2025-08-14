@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>A1_Sec05_24101045_Shabnoom-Tayammum.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec10_24101246_Nahiyan-Mysha-Ayome.txt<p></p><pre>
+﻿class AssgnTask1{
+    //Complete this method so that it gives the Expected Output
+    //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+    public static void mostWater(Integer[] height){
+<a name="4"></a><font color="#FF00FF"><a href="match369-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+    int maxWater = 0;
+  for (int i = 0; i &lt; height.length; i++) {
+        for (int j = i + 1; j &lt; height.length; j++){
+</font>            int width = j - i;
+            int minHeight;
+<a name="5"></a><font color="#FF0000"><a href="match369-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+            if (height[i] &lt; height[j]){
+                minHeight = height[i];
+            } 
+            else{
+                minHeight = height[j];
+            }
+            int currentArea = width * minHeight;
+</font>         
+            if (currentArea &gt; maxWater){
+                maxWater = currentArea;
+            }
+        }
+    }
+    System.out.println(maxWater); 
+}
+    public static void print(Integer[] array){
+        for (int i :array){
+            System.out.print(i + " ");
+        }
+    }
+class AssgnTask2{
+ public static Integer rowRotation( Integer examWeek, String[][]matrix){
+ int totalRow = matrix.length, totalCol = matrix[0].length;
+        String[][] final_matrix = new String[totalRow][totalCol];
+      for (int i= 0;i&lt; totalRow; i++){
+            int newRow = ((i+examWeek-1) % totalRow); 
+            for (int j = 0; j &lt; totalCol; j++){
+            final_matrix[newRow][j] = matrix[i][j];
+            }
+        }
+ int TempRow = 1;
+        for (int row = 1; row &lt;totalRow; row++){
+            for (int col = 0; col &lt; totalCol; col++){
+                if (final_matrix[row][col].equals("AA")){
+<a name="6"></a><font color="#00FF00"><a href="match369-0.html#6" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+                   TempRow+= row;
+                }
+            }
+        }
+        for (int row = 0; row &lt;totalRow; row++){
+            for (int col = 0; col &lt; totalCol; col++){
+</font>                System.out.print(final_matrix[row][col] + " ");
+            }
+            System.out.println();
+        }
+        return TempRow;
+    }
+class AssgnTask3{
+    public static Integer[][] compressMatrix( Integer[][] matrix ){
+<a name="0"></a><font color="#FF0000"><a href="match369-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_15.gif"/></a>
+
+   int row = matrix.length,col = matrix[0].length;
+        Integer[][] compressed = new Integer[row/2][col/2];
+        
+        for (int i = 0; i &lt; row; i += 2){
+            for (int j = 0; j &lt; col; j += 2){
+     int sum = matrix[i][j] + matrix[i][j+1] + matrix[i+1][j] + matrix[i+1][j+1];
+                compressed[i/2][j/2] = sum;
+            }
+        }
+        return compressed;
+</font>    }
+public static void print2D(Integer[][] matrix){
+ for (Integer[] i: matrix) {
+ for (Integer num : i) {
+ System.out.print("| " + num + " ");
+            }
+            System.out.println("|");
+        }
+    }
+//Assignment Task 04: Game Arena
+class AssgnTask4{
+public static void playGame(Integer[][] arena){
+        int totalPoint = 0;
+          for (int i = 0; i &lt; arena.length; i++){
+<a name="1"></a><font color="#00FF00"><a href="match369-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_6.gif"/></a>
+
+              for (int j = 0; j &lt; arena[i].length; j++) {
+                if (arena[i][j] % 50 == 0 &amp;&amp; arena[i][j]!= 0){
+                    if (i &gt; 0 &amp;&amp; arena[i-1][j] == 2) totalPoint += 2;
+ if (i &lt; arena.length-1 &amp;&amp; arena[i+1][j] == 2) totalPoint += 2;
+</font><a name="2"></a><font color="#0000FF"><a href="match369-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+            
+                    if (j &gt; 0 &amp;&amp; arena[i][j-1] == 2) totalPoint += 2;
+               
+                    if (j &lt; arena[i].length-1 &amp;&amp; arena[i][j+1] == 2) totalPoint += 2;
+</font><a name="3"></a><font color="#00FFFF"><a href="match369-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+                }
+            }
+        }
+        
+        System.out.print( "Points Gained " + totalPoint );
+        if (totalPoint &gt;= 10){
+            System.out.println(" Your team has survived the game");
+        } 
+        else{
+            System.out.println(" Your team is out");
+</font>        }
+    }
+    
+    public static void print2D(Integer[][] matrix) {
+        for (Integer[] row : matrix){
+            for (Integer n : row){
+                System.out.print(n + "\t");
+            }
+            System.out.println();
+        }
+    }</pre>
+</body>
+</html>

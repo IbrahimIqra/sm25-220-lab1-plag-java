@@ -1,0 +1,229 @@
+<html>
+<head>
+<title>A1_Sec09_24301114_Adnan-Mahbub-Irteja.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec09_24301114_Adnan-Mahbub-Irteja.txt<p></p><pre>
+Assignment Task 1:
+
+public static void mostWater( Integer[] height ){
+
+        Integer maximumArea=0;
+
+        for(int left= 0; left&lt;height.length-1; left++){
+
+            for(int right= left+1; right&lt;height.length; right++){
+
+                int width= right-left;
+                int Tallness;
+                if (height[right]&gt;height[left]){
+                    Tallness= height[left];
+                }
+                else{
+                    Tallness= height[right];
+                }
+
+                int area= width*Tallness;
+                if(area&gt;maximumArea){
+                    maximumArea= area;
+                }
+
+            }
+
+        }
+
+        System.out.println(maximumArea);
+
+    }
+
+
+Assignment Task 2:
+
+public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+
+        Integer counter= 1;
+
+        while(true){
+
+            if (counter == examWeek){
+                break;
+            }
+
+            for(int columnIndex= 0; columnIndex&lt;matrix[0].length; columnIndex++){
+
+                String tempDown= matrix[0][columnIndex];
+                String tempUp= matrix[matrix.length-1][columnIndex];
+
+                for(int rowIndex= 0; rowIndex&lt;matrix.length; rowIndex++){
+                    matrix[rowIndex][columnIndex]= tempUp;
+                    if(rowIndex==matrix.length-1){
+                        break;
+                    }
+                    else{
+                        tempUp= tempDown;
+                        tempDown= matrix[rowIndex+1][columnIndex];
+                    }
+                }
+
+            }
+
+            counter++;
+
+        }
+
+        counter--;
+
+        Integer friendRow= 0;
+        String friendSeat= "AA";
+
+<a name="8"></a><font color="#00FFFF"><a href="match82-1.html#8" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_2.gif"/></a>
+
+        for (int i=0; i&lt;matrix.length; i++){
+            for (int j=0; j&lt;matrix[0].length; j++){
+                if (matrix[i][j].equals(friendSeat)){
+</font>                    friendRow= i;
+                    break;
+                }
+            }
+        }
+
+        Arr.print2D(matrix);
+        friendRow+=1;
+
+        return friendRow;
+    }
+
+Assignment Task 3:
+
+public static Integer[][] compressMatrix( Integer[][] matrix ){
+
+        Integer newRow= matrix.length/2;
+        Integer newColumn= matrix[0].length/2;
+        Integer[][] compressedMatrix= new Integer[newRow][newColumn];
+
+        for(int i=0; i&lt; matrix.length; i++){
+            for(int j=0; j&lt; matrix[0].length; j++){
+<a name="0"></a><font color="#FF0000"><a href="match82-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+                Integer sum= matrix[i][j] + matrix[i+1][j] + matrix[i][j+1] + matrix[i+1][j+1];
+                compressedMatrix[i/2][j/2]= sum;
+</font>                j++;
+            }
+            i++;
+        }
+
+        return compressedMatrix;
+    }
+
+Assignment Task 4: 
+
+public static void playGame( Integer[][] arena ){
+
+<a name="4"></a><font color="#FF00FF"><a href="match82-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_3.gif"/></a>
+
+        Integer totalPoints= 0;
+
+        for(int i=0; i&lt;arena.length; i++){
+            for(int j=0; j&lt;arena[0].length; j++){
+
+                if(arena[i][j]!=0 &amp;&amp; arena[i][j]%50==0){
+</font>
+<a name="2"></a><font color="#0000FF"><a href="match82-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+                    if(i==0){
+
+                        if(j==0){
+                            if(arena[i][j+1]==2) totalPoints+=2;
+                            if(arena[i+1][j]==2) totalPoints+=2;
+</font>                        }
+
+<a name="1"></a><font color="#00FF00"><a href="match82-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+                        if(j==arena[0].length-1){
+                            if(arena[i][j-1]==2) totalPoints+=2;
+                            if(arena[i+1][j]==2) totalPoints+=2;
+</font>                        }
+
+                        if(j!=0 &amp;&amp; j!=arena[0].length-1){
+                            if(arena[i][j+1]==2) totalPoints+=2;
+<a name="5"></a><font color="#FF0000"><a href="match82-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+                            if(arena[i][j-1]==2) totalPoints+=2;
+                            if(arena[i+1][j]==2) totalPoints+=2;
+</font>                        }
+
+                    }
+
+                    if(i==arena.length-1){
+
+                        if(j==0){
+<a name="6"></a><font color="#00FF00"><a href="match82-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_2.gif"/></a>
+
+                            if(arena[i][j+1]==2) totalPoints+=2;
+                            if(arena[i-1][j]==2) totalPoints+=2;
+</font>                        }
+
+<a name="3"></a><font color="#00FFFF"><a href="match82-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+                        if(j==arena[0].length-1){
+                            if(arena[i][j-1]==2) totalPoints+=2;
+                            if(arena[i-1][j]==2) totalPoints+=2;
+</font>                        }
+
+                        if(j!=0 &amp;&amp; j!=arena[0].length-1){
+                            if(arena[i][j+1]==2) totalPoints+=2;
+<a name="7"></a><font color="#0000FF"><a href="match82-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_2.gif"/></a>
+
+                            if(arena[i][j-1]==2) totalPoints+=2;
+                            if(arena[i-1][j]==2) totalPoints+=2;
+</font>                        }
+
+                    }
+
+                    if(i!=0 &amp;&amp; i!=arena.length-1){
+
+                        if(j==0){
+<a name="10"></a><font color="#FF0000"><a href="match82-1.html#10" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_2.gif"/></a>
+
+                            if(arena[i][j+1]==2) totalPoints+=2;
+                            if(arena[i-1][j]==2) totalPoints+=2;
+</font>                            if(arena[i+1][j]==2) totalPoints+=2;
+                        }
+
+<a name="9"></a><font color="#FF00FF"><a href="match82-1.html#9" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_2.gif"/></a>
+
+                        if(j==arena[0].length-1){
+                            if(arena[i][j-1]==2) totalPoints+=2;
+                            if(arena[i-1][j]==2) totalPoints+=2;
+</font>                            if(arena[i+1][j]==2) totalPoints+=2;
+                        }
+
+                        if(j!=0 &amp;&amp; j!=arena[0].length-1){
+                            if(arena[i][j+1]==2) totalPoints+=2;
+                            if(arena[i][j-1]==2) totalPoints+=2;
+                            if(arena[i-1][j]==2) totalPoints+=2;
+                            if(arena[i+1][j]==2) totalPoints+=2;
+                        }
+
+                    }
+
+                }
+
+                else{
+                    continue;
+                }
+
+            }
+        }
+
+        if (totalPoints&lt;10){
+            System.out.println("Points Gained: " +totalPoints+ ". Your team is out.");
+        }
+        else{
+            System.out.println("Points Gained: " +totalPoints+ ". Your team has survived the game.");
+        }
+
+    }</pre>
+</body>
+</html>

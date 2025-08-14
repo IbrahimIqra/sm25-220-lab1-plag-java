@@ -1,0 +1,148 @@
+<html>
+<head>
+<title>A1_Sec05_24101045_Shabnoom-Tayammum.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec05_24101045_Shabnoom-Tayammum.txt<p></p><pre>
+**class AssgnTask1 **
+
+{
+
+    // Complete this method so that it gives the Expected Output
+    // YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+    public static void mostWater(Integer[] height) {
+        int mswt = 0;
+<a name="4"></a><font color="#FF00FF"><a href="match369-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+        int newhgt = 0;
+        for (int s = 0; s &lt; height.length; s++) {
+            for (int t = s + 1; t &lt; height.length; t++) {
+</font><a name="5"></a><font color="#FF0000"><a href="match369-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+                if (height[s] &lt; height[t]) {
+                    newhgt = height[s];
+                } else {
+                    newhgt = height[t];
+                }
+                int newwdh = t - s;
+</font>                int max_areaa = newhgt * newwdh;
+                if (max_areaa &gt; mswt) {
+                    mswt = max_areaa;
+                }
+            }
+        }
+        System.out.println(mswt);
+    }
+
+
+
+
+
+
+
+**class AssgnTask2 **
+{
+
+   
+    public static Integer rowRotation(Integer examWeek, String[][] matrix) {
+        int rotationTotal = examWeek - 1;
+        int r = matrix.length;
+        int c = matrix[0].length;
+
+        for (int s = 0; s &lt; rotationTotal; s++) {
+            String[] temp = matrix[r - 1];
+            for (int t = r - 1; t &gt; 0; t--) {
+                matrix[t] = matrix[t - 1];
+            }
+<a name="6"></a><font color="#00FF00"><a href="match369-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+            matrix[0] = temp;
+        }
+        for (int o = 0; o &lt; r; o++) {
+            for (int p = 0; p &lt; c; p++) {
+</font>                if (matrix[o][p] == ("AA")) {
+                    return o + 1;
+                }
+            }
+        }
+        return -1;
+    }
+
+
+
+
+
+
+**class AssgnTask3 **
+{
+
+  // Complete this method so that it gives the Expected Output
+  // YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+  public static Integer[][] compressMatrix(Integer[][] matrix) {
+    int rw = matrix.length;
+<a name="0"></a><font color="#FF0000"><a href="match369-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_17.gif"/></a>
+
+    int clmn = matrix[0].length;
+    Integer[][] compress = new Integer[rw / 2][clmn / 2];
+    // For this task you'll need to create new 2D array
+    for (int s = 0; s &lt; rw; s += 2) {
+      for (int t = 0; t &lt; clmn; t += 2) {
+        int summation = matrix[s][t] + matrix[s][t + 1] + matrix[s + 1][t] + matrix[s + 1][t + 1];
+        compress[s / 2][t / 2] = summation; 
+      }
+    }
+
+    return compress;
+</font>  }
+
+**class AssgnTask4**
+{
+
+    //Complete this method so that it gives the Expected Output
+    //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+   static class Arr{
+      public static void print2D(Integer [][] mat){
+        for (Integer[] rw:mat){
+          for(Integer value:rw){
+            System.out.print(value);}
+          System.out.println();}
+      }
+    }
+    public static void playGame( Integer[][] arena ){
+int topoints=0;
+int rw=arena.length;
+int clmn=arena[0].length;
+for (int s=0;s&lt;rw;s++){
+<a name="1"></a><font color="#00FF00"><a href="match369-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_7.gif"/></a>
+
+  for (int t=0;t&lt;clmn;t++){
+    if(arena[s][t]%50 ==0 &amp;&amp; arena[s][t]!=0){
+      if (s&gt;0 &amp;&amp; arena[s-1][t]==2){
+        topoints+=2; }
+      if (s&lt;rw-1 &amp;&amp; arena[s+1][t]==2){
+</font><a name="2"></a><font color="#0000FF"><a href="match369-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_6.gif"/></a>
+
+        topoints+=2;}
+      if (t&gt;0 &amp;&amp; arena[s][t-1]==2){
+        topoints+=2;}
+      if(t&lt;clmn-1 &amp;&amp; arena[s][t+1]==2){
+</font><a name="3"></a><font color="#00FFFF"><a href="match369-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_6.gif"/></a>
+
+        topoints+=2;
+      }}
+        //For this task you don't need to create any new 2D array
+        //just print the result inside the function
+        
+        //TO DO
+  }}
+System.out.println("points earned:"+topoints);
+if(topoints&gt;=10){
+  System.out.println("your team survived");}
+else{
+  System.out.println("your team is out");
+</font>}
+}
+    </pre>
+</body>
+</html>

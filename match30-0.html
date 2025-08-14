@@ -1,0 +1,249 @@
+<html>
+<head>
+<title>A1_Sec07_24141062_GM-Ridwan-Ullah.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec07_24141062_GM-Ridwan-Ullah.txt<p></p><pre>
+﻿//Assignment Task 01: Container with Most Water
+
+
+
+
+public class AssgnTask1 
+
+
+{
+   
+        //Complete this method so that it gives the Expected Output
+        //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+        public static void mostWater( Integer[] height ){
+        int max_area=0;
+              for(int left=-0; left&lt;height.length/2; left++){
+
+
+                    for( int right=height.length-1;right&gt;height.length/2;right--)
+            {
+                     int length = right - left;
+                       int min_height = Math.min(height[left], height[right]);
+                        int area  =length*min_height;
+                      max_area =  Math.max(max_area,  area);
+               }
+           }
+            //TO DO
+<a name="6"></a><font color="#00FF00"><a href="match30-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_2.gif"/></a>
+
+System.out.println(max_area);
+        }
+        //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
+        public static void main(String[] args){
+            Integer[] array = {1,8,6,2,5,4,8,3,7};
+</font>            System.out.println("Given Array: ");
+            Arr.print(array);
+<a name="8"></a><font color="#00FFFF"><a href="match30-1.html#8" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_2.gif"/></a>
+
+            System.out.println("\nExpected Output:");
+            System.out.print("49");
+            System.out.print("\nYour Output:\n");
+            mostWater( array );
+        }
+    }
+    //Assignment Task 02: Row Rotation Policy
+public class AssgnTask2 {
+</font><a name="4"></a><font color="#FF00FF"><a href="match30-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_2.gif"/></a>
+
+        //Complete this method so that it gives the Expected Output
+        //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+        public static Integer rowRotation(Integer examWeek, String[][] matrix) {
+
+
+            int rows  =   matrix.length;
+            int  cols  =   matrix [0].length;
+</font>
+
+                for(int i=1;i&lt;examWeek;i++) {
+
+
+                       for (int j = rows - 1; j &gt; 0; j--) {
+
+
+                             for (int k = 0; k &lt; cols; k++)
+ {
+
+
+                                 String temp  =   matrix[j][k];
+                                 matrix[j][k]  =  matrix[j - 1][k];
+                                 matrix[j - 1][k]   =  temp;
+                        }
+                   }
+              }
+<a name="2"></a><font color="#0000FF"><a href="match30-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+             int len  = -1;
+
+
+              for(int i=0;i&lt;rows;i++) 
+{
+                  for(int j=0;j&lt;cols;j++)
+ {
+                    if(matrix[i][j].equals("AA"))
+ {
+                           len =i+1;
+</font>                   }
+                       System.out.print("| "+ matrix[i][j]+ " ");
+                 }
+              System.out.println("|");
+             }
+            //For this task you don"t need to create new arrays
+            //After rotation the Matrix should be printed inside the method
+            //Only the integer row number is to be returned
+            //TO DO
+             return len;
+        }
+        //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
+        public static void main(String[] args) {
+            String[][] seatStatus = {
+                    {"A", "B", "C", "D", "E"},
+                    {"F", "G", "H", "I", "J"},
+                    {"K", "L", "M", "N", "O"},
+                    {"P", "Q", "R", "S", "T"},
+                    {"U", "V", "W", "X", "Y"},
+                    {"Z", "AA", "BB", "CC", "DD"}
+            };
+            System.out.println("Given Seat Status: ");
+            Arr.print2D(seatStatus);
+            System.out.println("\nExpected Output:");
+            System.out.println("| U  | V  | W  | X  | Y  | ");
+            System.out.println("| Z  | AA | BB | CC | DD | ");
+            System.out.println("| A  | B  | C  | D  | E  | ");
+            System.out.println("| F  | G  | H  | I  | J  | ");
+            System.out.println("| K  | L  | M  | N  | O  | ");
+            System.out.println("| P  | Q  | R  | S  | T  | ");
+            System.out.println("Your friend AA will be on row 2");
+<a name="5"></a><font color="#FF0000"><a href="match30-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_2.gif"/></a>
+
+            System.out.print("\nYour Output:\n");
+            Integer examWeek = 3;
+            //This following should print modified seat status after rotation and return the current exam week
+            Integer rowNumber = rowRotation(examWeek, seatStatus);
+            //The following should print Your friend AA will be on row 2
+            System.out.println("Your friend AA will be on row " + rowNumber);
+        }
+    }
+}
+    //Assignment Task 03: Matrix Compression
+public class AssgnTask3 {
+</font>        //Complete this method so that it gives the Expected Output
+        //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+ 
+<a name="7"></a><font color="#0000FF"><a href="match30-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_2.gif"/></a>
+
+        public static Integer[][] compressMatrix( Integer[][] matrix ){
+            //For this task you'll need to create new 2D array
+   int rows   =   matrix.length;
+    int cols   =   matrix[0].length;
+</font>   Integer[][] result  =  new Integer[rows/2][cols/2];
+ 
+for(int i = 0; i &lt; rows/2; i++)
+{
+      for(int j = 0; j &lt; cols/2; j++)
+{
+<a name="1"></a><font color="#00FF00"><a href="match30-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_4.gif"/></a>
+
+       result[i][j]  = matrix[2*i][2*j]  + matrix[2*i][2*j+1]  + matrix[2*i+1][2*j]  + matrix[2*i+1][2*j+1];
+</font>    }
+}
+            //TO DO
+            //remove the line below and return the newly created Compressed 2D matrix
+<a name="9"></a><font color="#FF00FF"><a href="match30-1.html#9" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_2.gif"/></a>
+
+             return result;
+        }
+        //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
+        public static void main(String[] args){
+            Integer[][] matrix = {
+                    { 1 , 2 , 3 , 4 },
+                    { 5 , 6 , 7 , 8 },
+</font>                    { 1 , 3 , 5 , 2 },
+                    {-2 , 0 , 6 ,-3 }
+            };
+            System.out.println("Given Matrix: ");
+            Arr.print2D(matrix);
+            System.out.println("\nExpected Output:");
+            System.out.print("| 14 | 22 |\n| 2  | 10 |\n");
+            System.out.print("\nYour Output:\n");
+            Integer[][] returnedArray = compressMatrix( matrix );
+            Arr.print2D( returnedArray );
+        }
+    }
+}
+    //Assignment Task 04: Game Arena
+<a name="3"></a><font color="#00FFFF"><a href="match30-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+    public class AssgnTask4 {
+        //Complete this method so that it gives the Expected Output
+        //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+        public static void playGame( Integer[][] arena ){
+            int sum= 0;
+            for(int i=0;i&lt;arena.length;i++) 
+{
+                  for(int j=0;j&lt;arena[0].length;j++)
+</font>{
+                     if(arena[i][j]%50==0 &amp;&amp; arena[i][j]&gt;0)
+{
+<a name="0"></a><font color="#FF0000"><a href="match30-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_12.gif"/></a>
+
+                          if (i &lt; arena.length-1 &amp;&amp; arena[i+1][j]==2)
+                             sum += 2;
+                            if (i &lt; arena.length- 1 &amp;&amp; arena[i+1][j]==2)
+                            sum += 2;
+                         if (j &gt; 0 &amp;&amp; arena[i][j-1]==2)
+                            sum += 2;
+                        if (j &lt; arena[0].length-1 &amp;&amp; arena[i][j+1]==2)
+                            sum += 2;
+                   }
+               }
+         }
+            //For this task you don't need to create any new 2D array
+            //just print the result inside the function
+            if (sum &gt;= 10) 
+{
+                System.out.println("Points Gained: " + sum + ". Your team has survived the game.");
+            }
+            else 
+        {  System.out.println("Points Gained: " + sum + ". Your team is out.");
+            }
+            //TO DO
+        }
+        //DO NOT CHANGE ANY DRIVER CODE BELOW THIS LINE
+        public static void main(String[] args){
+            Integer[][] arena = {
+                    {0,2,2,0},
+</font>                    {50,1,2,0},
+                    {2,2,2,0},
+                    {1,100,2,0}
+            };
+            System.out.println("Given Arena: ");
+            Arr.print2D(arena);
+            System.out.println("\nExpected Output:");
+            System.out.print("Points Gained: 6. Your team is out.\n");
+            System.out.print("\nYour Output:\n");
+            playGame( arena );
+            System.out.print("\n======================\n");
+            Integer[][] arena1 = {
+                    {0,2,2,0,2},
+                    {1,50,2,1,100},
+                    {2,2,2,0,2},
+                    {0,200,2,0,0}
+            };
+            System.out.println("\nGiven Arena: ");
+            Arr.print2D(arena1);
+            System.out.println("\nExpected Output:");
+            System.out.print("Points Gained: 14. Your team has survived the game.\n");
+            System.out.print("\nYour Output:\n");
+            playGame( arena1 );
+        }
+    }
+}</pre>
+</body>
+</html>

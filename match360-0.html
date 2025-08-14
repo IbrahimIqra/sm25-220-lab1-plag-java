@@ -1,0 +1,228 @@
+<html>
+<head>
+<title>A1_Sec18_23301081_Mahib-Shahriar.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec18_23301081_Mahib-Shahriar.txt<p></p><pre>
+﻿======Assignment Task 1 ======
+ public static void mostWater( Integer[] height ){
+
+
+        //TO DO
+
+
+        // My Code starts here
+<a name="1"></a><font color="#00FF00"><a href="match360-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_7.gif"/></a>
+
+        int totalArea = 0;
+        int starting = 0;
+        int ending = height.length - 1;
+       
+        while (starting &lt; ending) {
+            int vertical = Math.min(height[starting], height[ending]);
+            int horizontal = ending - starting;
+</font>            int area = vertical * horizontal;
+<a name="6"></a><font color="#00FF00"><a href="match360-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+            totalArea = Math.max(totalArea, area);
+           
+            if (height[starting] &lt; height[ending]) {
+                starting++;
+            } else {
+                ending--;
+            }
+        }
+        System.out.print(totalArea);
+</font>        // My Code ends here
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======Assignment Task 2======
+<a name="4"></a><font color="#FF00FF"><a href="match360-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+   public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+
+
+        //For this task you don"t need to create new arrays
+        //After rotation the Matrix should be printed inside the method
+        //Only the integer row number is to be returned
+
+
+        //TO DO
+       
+        // ======My Code Starts From here======
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int whenExam = (examWeek - 1) % row;
+</font><a name="5"></a><font color="#FF0000"><a href="match360-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+        String[][] rotateMatrix = new String[row][col];
+        for (int i = 0; i &lt; row; i++) {
+</font>            rotateMatrix[(i + whenExam) % row] = matrix[i];
+        }
+<a name="7"></a><font color="#0000FF"><a href="match360-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+        Arr.print2D(rotateMatrix);
+        for (int i = 0; i &lt; row; i++) {
+            for (int j = 0; j &lt; col; j++) {
+</font>                if (rotateMatrix[i][j] == "AA") {
+                    return i + 1;
+                }
+            }
+        }
+        return -1;
+        // ======My Code Ends here======
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======Assignment Task 3======
+<a name="0"></a><font color="#FF0000"><a href="match360-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_14.gif"/></a>
+
+    public static Integer[][] compressMatrix( Integer[][] matrix ){
+
+
+        //For this task you'll need to create new 2D array
+       
+        //TO DO
+
+
+        //remove the line below and return the newly created Compressed 2D matrix
+       
+        // ======My Code starts from here======
+        int row = matrix.length;
+        int col = matrix[0].length;
+        Integer[][] newarr = new Integer[row / 2][col / 2];
+        for (int i = 0; i &lt; row; i += 2) {
+            for (int j = 0; j &lt; col; j += 2) {
+                int sum = matrix[i][j] + matrix[i][j + 1] + matrix[i + 1][j] + matrix[i + 1][j + 1];
+</font><a name="3"></a><font color="#00FFFF"><a href="match360-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_4.gif"/></a>
+
+                newarr[i / 2][j / 2] = sum;
+            }
+        }
+        return newarr;
+</font>
+
+        // ======My Code ends here======
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======Assignment Task 4======
+<a name="2"></a><font color="#0000FF"><a href="match360-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_6.gif"/></a>
+
+    public static void playGame( Integer[][] arena ){
+
+
+        //For this task you don't need to create any new 2D array
+        //just print the result inside the function
+       
+        //TO DO
+       
+        // ======My Code starts here======
+        int row = arena.length;
+        int col = arena[0].length;
+        int tp = 0;
+        for (int i = 0; i &lt; row; i++) {
+            for (int j = 0; j &lt; col; j++) {
+</font>                if (arena[i][j] % 50 == 0 &amp;&amp; arena[i][j] != 0) {
+                    int points = 0;
+                    if (i &gt; 0 &amp;&amp; arena[i - 1][j] == 2) {
+                        points++;
+                    }
+                    if (i &lt; row - 1 &amp;&amp; arena[i + 1][j] == 2) {
+                        points++;
+                    }
+                    if (j &gt; 0 &amp;&amp; arena[i][j - 1] == 2) {
+                        points++;
+                    }
+                    if (j &lt; col - 1 &amp;&amp; arena[i][j + 1] == 2) {
+                        points++;
+                    }
+                    tp += points * 2;
+                }
+            }
+        }
+<a name="8"></a><font color="#00FFFF"><a href="match360-1.html#8" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+        if (tp &gt;= 10) {
+            System.out.println("Points Gained: " + tp + ". Your team has survived the game.");
+        } else {
+            System.out.println("Points Gained: " + tp + ". Your team is out.");
+</font>        }
+
+
+        // ======My Code ends here======
+    }</pre>
+</body>
+</html>

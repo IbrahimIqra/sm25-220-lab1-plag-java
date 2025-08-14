@@ -1,0 +1,182 @@
+<html>
+<head>
+<title>A1_Sec07_24301418_Samannay-Das.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec01_23301168_Raiyan-Shafiqur-Rahman.txt<p></p><pre>
+﻿Assignment Task-1
+
+
+ public static void mostWater( Integer[] height ){
+
+
+        Integer maxArea=0;
+        Integer pointer1=0;
+        Integer pointer2=height.length-1;
+        
+        while (pointer1&lt;pointer2)
+        {
+          maxArea=Math.max(maxArea,(pointer2-pointer1)*Math.min(height[pointer1],height[pointer2]));
+          
+          if (height[pointer1]&lt;height[pointer2])
+          {
+            pointer1++;
+          }
+          else
+          {
+            pointer2--;
+          }
+        }
+        System.out.println(maxArea);
+    }
+    
+
+
+Assignment Task-2
+
+
+<a name="1"></a><font color="#00FF00"><a href="match17-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_23.gif"/></a>
+
+public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+
+
+        int row= matrix.length;
+        int rotation=(examWeek%row)-1;
+        int i=0;
+        int last_row=matrix.length-1;
+        while(i&lt;last_row)
+        {
+          String[]temp=matrix[i];
+          matrix[i]=matrix[last_row];
+          matrix[last_row]=temp;
+          i++;
+          last_row--;
+        }
+        i=0;
+        last_row=rotation-1;
+        while(i&lt;last_row)
+        {
+          String[]temp=matrix[i];
+          matrix[i]=matrix[last_row];
+          matrix[last_row]=temp;
+          i++;
+          last_row--;
+        }
+        i=rotation+1;
+        last_row=matrix.length-1;
+        while(i&lt;last_row)
+        {
+          String[]temp=matrix[i];
+          matrix[i]=matrix[last_row];
+          matrix[last_row]=temp;
+          i++;
+          last_row--;
+</font>        } 
+        
+        
+        int rows=0;
+        for (int x=0;x&lt;matrix.length;x++){
+            for (int y=0;y &lt; matrix[0].length;y++){
+                 
+                if (matrix[x][y].equals("AA")){
+                    rows = x+1 ;
+                }
+                if (y == matrix[0].length-1){
+                    System.out.print("| "+matrix[x][y]+" |");    
+                }
+                else{
+                    System.out.print("|  "+matrix[x][y]+"  ");
+
+
+                }
+                
+            }
+            System.out.println();
+        }
+
+
+        return rows;
+    }
+
+
+
+
+Assignment Task-3
+
+
+ public static Integer[][] compressMatrix( Integer[][] matrix ){
+        
+        Integer row=matrix.length;
+        Integer col=matrix[0].length;
+        Integer r=row/2;
+        Integer c=col/2;
+        Integer[][] compressed = new Integer[r][c];
+        Integer r1=0;
+<a name="2"></a><font color="#0000FF"><a href="match17-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_12.gif"/></a>
+
+        Integer c1=0;
+        for (int i=0; i&lt;row; i+=2)
+        {
+          for ( int j=0;j&lt;col;j+=2)
+          {
+            int sum=matrix[i][j]+matrix[i+1][j]+matrix[i][j+1]+matrix[i+1][j+1];
+            compressed[r1][c1]=sum;
+            c1++;
+          }
+           r1++;
+           c1=0;
+        }
+        return compressed;
+</font>    }
+
+
+
+
+
+
+Assignment Task-4
+
+
+<a name="0"></a><font color="#FF0000"><a href="match17-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_24.gif"/></a>
+
+public static void playGame( Integer[][] arena ){
+      int row =arena.length;
+      int col =arena[0].length;
+      int total =0;
+      for (int x=0;x&lt;row;x++)
+      {
+        for (int y=0;y&lt;col;y++)
+        {
+          if (arena[x][y]!=0 &amp;&amp; arena[x][y]%50 ==0)
+          {
+            if (x&gt;0 &amp;&amp; arena[x-1][y]==2)
+            {
+              total+=2;
+            }
+            if (x&lt;row-1 &amp;&amp; arena[x+1][y]==2)
+            {
+              total+=2;
+            }
+            if (y&gt;0 &amp;&amp; arena[x][y-1]==2)
+            {
+              total+=2;
+            }
+            if (y&lt;col-1 &amp;&amp; arena[x][y+1]==2)
+            {
+              total+=2;
+            }
+          }
+        }
+      }
+      if (total&gt;=10)
+      {
+        System.out.println("Points Gained: " + total + ". Your team has survived the game.");
+      } 
+      else 
+      {
+        System.out.println("Points Gained: " + total + ". Your team is out.");
+</font>      }
+    }</pre>
+</body>
+</html>

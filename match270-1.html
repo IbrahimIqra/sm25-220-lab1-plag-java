@@ -1,0 +1,200 @@
+<html>
+<head>
+<title>A1_Sec26_24101215_Abu-Nabil-Muhammad-Hameem.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec22_24101221_Sadia-Afrin-Athoi.txt<p></p><pre>
+
+//Assignment Task 01: Container with Most Water
+class AssgnTask1{
+
+    //Complete this method so that it gives the Expected Output
+    //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+    public static void mostWater( Integer[] height ){
+
+        int left =0;
+        int right = height.length-1;
+<a name="2"></a><font color="#0000FF"><a href="match270-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_9.gif"/></a>
+
+        int max = 0;
+
+        while (left&lt;right){
+            int small;
+            if(height[left]&lt;height[right]){
+                small = height[left];
+            }
+            else{
+                small= height[right];
+            }
+
+            int width = right - left;
+            int water = small*width;
+
+            if (water&gt; max){
+                max = water;
+            }
+            if (height[left]&lt;height[right]){
+                left=left+1;
+</font>
+            }
+            else{
+                right = right-1;
+            }
+
+
+        }
+        System.err.println(max);
+       
+
+    }
+
+
+
+
+
+
+//Assignment Task 02: Row Rotation Policy
+class AssgnTask2{
+
+    //Complete this method so that it gives the Expected Output
+    //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+<a name="1"></a><font color="#00FF00"><a href="match270-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_13.gif"/></a>
+
+    public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+
+        int Row = matrix.length;
+        int Column = matrix[0].length;
+        int rotate = examWeek -1;
+
+        for(int r =0; r&lt;rotate ; r++){
+            String[] latestRow = matrix[Row-1];
+
+            
+            for(int i= Row-1; i&gt;0; i--){
+                matrix[i]=matrix[i-1];
+            }
+            matrix[0]=latestRow;
+</font>        }
+
+        for (int r=0; r&lt;Row ; r++){
+            for (int c=0; c&lt; Column ; c++){
+                System.out.print(matrix[r][c] + " ");
+            }
+            System.out.println();
+        }
+
+<a name="5"></a><font color="#FF0000"><a href="match270-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+        for (int r=0; r&lt;Row ; r++){
+            for (int c=0; c&lt; Column ; c++){
+            
+                if (matrix[r][c].equals("AA")){
+</font>                    return r+1;
+                }
+            }
+        }
+
+       
+        return -1;
+    }
+
+
+
+
+
+
+
+//Assignment Task 03: Matrix Compression
+class AssgnTask3{
+
+    //Complete this method so that it gives the Expected Output
+    //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+<a name="4"></a><font color="#FF00FF"><a href="match270-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+    public static Integer[][] compressMatrix( Integer[][] matrix ){
+        int row = matrix.length;
+        int column = matrix[0].length;
+</font>
+        int R = row/2;
+<a name="3"></a><font color="#00FFFF"><a href="match270-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+        int C = column/2;
+
+        Integer [][] comp = new Integer[R][C];
+
+        int newR = 0;
+        for (int r=0; r&lt; row ; r+=2){
+</font>            int newC =0;
+            for (int c=0; c&lt; column ; c+=2){
+            int sum =0;
+
+            sum += matrix[r][c];
+            sum += matrix[r][c+1];
+            sum += matrix[r+1][c];
+            sum += matrix[r+1][c+1];
+            comp[newR][newC] = sum;
+
+            newC++;
+
+            } 
+            newR++;       
+
+
+        }
+
+        
+        return comp;
+    }
+
+
+
+
+
+//Assignment Task 04: Game Arena
+class AssgnTask4{
+
+    //Complete this method so that it gives the Expected Output
+    //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+    public static void playGame( Integer[][] arena ){
+        int point = 0;
+        int row = arena.length;
+        int column= arena[0].length;
+
+        for (int r=0; r&lt;row ; r++){
+            for (int c=0; c&lt; column ; c++){
+                int current = arena[r][c] ;
+
+                if (current &gt;0 &amp;&amp; current % 50 == 0){
+<a name="0"></a><font color="#FF0000"><a href="match270-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_14.gif"/></a>
+
+                    if ((r-1)&gt;=0 &amp;&amp; arena [r-1][c]==2){
+                        point+=2;
+                    }
+                    if ((r+1) &lt; row &amp;&amp; arena[r+1][c] == 2) {
+                    point += 2;
+                    }
+                    if ((c-1)&gt;=0 &amp;&amp; arena [r][c-1]==2){
+                        point+=2;
+                    }
+                    if ((c+1) &lt; row &amp;&amp; arena[r][c+1] == 2) {
+                    point+= 2;
+</font>                    }
+                }
+
+                }
+            }
+
+        System.out.print("Points Gained: " + point + ". ");
+        if (point &gt;= 10) {
+        System.out.println("Your team has survived the game.");
+        }
+         else {
+        System.out.println("Your team is out.");
+         }
+    
+
+        
+    }</pre>
+</body>
+</html>

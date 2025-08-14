@@ -1,0 +1,171 @@
+<html>
+<head>
+<title>A1_Sec10_24301537_Syeda-Fariza-Alam.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec10_24301537_Syeda-Fariza-Alam.txt<p></p><pre>
+Name:Syeda Fariza Alam
+Section:10
+ID:24301537
+Course code CSE220
+
+//Task1 
+
+<a name="7"></a><font color="#0000FF"><a href="match227-1.html#7" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+public static void mostWater( Integer[] height ){
+
+       int leftIdx = 0;
+       int rightIdx = height.length-1; //Index is one less than length
+       int areaMax = 0;
+</font>       int width=0;
+       int shortHeight;
+       int area;
+       while(rightIdx&gt;leftIdx){
+         width=rightIdx-leftIdx;
+         if(height[leftIdx]&lt;height[rightIdx]){
+           shortHeight = height[leftIdx];
+         }
+         else{
+           shortHeight = height[rightIdx];
+         }
+         area = shortHeight*width;
+         if(area&gt;areaMax){
+           areaMax=area;
+         }
+         if(height[rightIdx]&gt;height[leftIdx]){
+           leftIdx++;
+         }
+         else{
+           rightIdx--;
+         }
+      }
+        System.out.println(areaMax);
+    }
+
+
+//Task 2
+<a name="0"></a><font color="#FF0000"><a href="match227-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_11.gif"/></a>
+
+ public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+
+        //For this task you don"t need to create new arrays
+        //After rotation the Matrix should be printed inside the method
+        //Only the integer row number is to be returned
+
+        //TO DO
+        //return null;
+      int r = matrix.length;
+      int c = matrix[0].length;
+      for(int i=0; i&lt;examWeek; i++){
+        String temp [] = new String[c];
+        for(int j =0; j&lt;c; j++){
+          temp[j]=matrix[r-1][j]; //storing last row in temp
+          
+        }
+        for(int k = r-1; k&gt;0; k--){
+</font>          for(int j=0; j&lt;c; j++){
+<a name="5"></a><font color="#FF0000"><a href="match227-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+            matrix[k][j]=matrix[k-1][j];
+          }
+        }
+        for(int j = 0; j&lt;c; j++){
+          matrix[0][j]=temp[j];
+        }
+      }
+        
+      for(int i=0; i&lt;r; i++){
+</font><a name="2"></a><font color="#0000FF"><a href="match227-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+         for(int j=0; j&lt;c; j++){
+           System.out.print(matrix[i][j] + " ");
+         }
+         System.out.println();
+       }
+      for(int i=0; i&lt;r; i++){
+        for(int j=0; j&lt;c; j++){
+</font>          if("AA".equals(matrix[i][j])){
+            return i;
+          }
+        }
+      }
+        
+    }
+
+//Task 3
+
+<a name="6"></a><font color="#00FF00"><a href="match227-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+public static Integer[][] compressMatrix( Integer[][] matrix ){
+
+        //For this task you'll need to create new 2D array
+        
+        //TO DO
+
+        //remove the line below and return the newly created Compressed 2D matrix
+        //return null;
+      int r = matrix.length;
+      int c = matrix[0].length;
+</font>      int sum;
+<a name="3"></a><font color="#00FFFF"><a href="match227-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+      Integer [][] compressed = new Integer[r/2][c/2];
+      for(int i = 0; i&lt;r; i+=2){
+        for(int j =0; j&lt;c; j+=2){
+</font><a name="1"></a><font color="#00FF00"><a href="match227-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_7.gif"/></a>
+
+          sum = matrix[i][j]+matrix[i][j+1]+matrix[i+1][j]+matrix[i+1][j+1];
+          compressed[i/2][j/2]=sum;
+        }
+      }
+      return compressed;
+</font>    }
+
+
+//Task 4
+
+public static void playGame( Integer[][] arena ){
+
+        //For this task you don't need to create any new 2D array
+        //just print the result inside the function
+        
+        //TO DO
+      int row = arena.length;
+      int col = arena[0].length;
+      int totalGainedPoints = 0;
+      int pointsAdd=0;
+<a name="4"></a><font color="#FF00FF"><a href="match227-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_5.gif"/></a>
+
+      for(int i = 0; i&lt;row; i++){
+        for(int j=0; j&lt;col; j++){
+          if(arena[i][j]!=0 &amp;&amp; arena[i][j]%50==0){
+</font>            
+            if(i&lt;row-1 &amp;&amp; arena[i+1][j]==2){
+              pointsAdd+=2;
+            }
+            if(i&gt;0 &amp;&amp; arena[i-1][j]==2){
+              pointsAdd+=2;
+            }
+            if(j&lt;col-1 &amp;&amp; arena[i][j+1]==2){
+              pointsAdd+=2;
+            }
+            if(j&gt;0 &amp;&amp; arena[i][j-1]==2){
+              pointsAdd+=2;
+            }
+            totalGainedPoints+=pointsAdd;
+          }
+        }
+      }
+      if(totalGainedPoints&lt;=10 &amp;&amp; totalGainedPoints&gt;=0){
+        System.out.println("the player is out");
+      }
+         else{
+           System.out.println("the player has survived");
+         }
+       System.out.println("The player gained " +totalGainedPoints);  
+    }
+        </pre>
+</body>
+</html>

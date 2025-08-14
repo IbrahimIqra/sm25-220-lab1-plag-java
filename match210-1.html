@@ -1,0 +1,219 @@
+<html>
+<head>
+<title>A1_Sec18_24121167_MD.-ITTEHAD-ISLAM.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec18_24101369_S.M.Fahad-.txt<p></p><pre>
+//  Task 1
+
+<a name="0"></a><font color="#FF0000"><a href="match210-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_43.gif"/></a>
+
+class AssgnTask1{
+
+
+    public static void mostWater( Integer[] height ){
+
+      
+
+       int start_point = 0;
+       int end_point = height.length-1;
+       int area = 0;
+
+       while(start_point &lt; end_point){
+
+         int hello;
+
+         if(height[start_point]&lt;height[end_point]){
+          hello=height[start_point];
+         }
+
+         else{
+          hello=height[end_point];
+         }
+
+         int yello = end_point-start_point;
+         int area1 = hello*yello;
+
+         if(area1&gt;area){
+          area=area1;
+         }
+
+         if(height[start_point]&lt;height[end_point]){
+          start_point++;
+         }
+
+         else{
+          end_point--;
+         }
+
+       }
+
+       System.out.println(area);
+
+
+    }
+
+
+//   Task  2
+
+
+class AssgnTask2{
+
+   
+    public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+
+        int row = matrix.length;
+        int column = matrix[0].length;
+
+        for (int a = 0; a &lt; examWeek - 1; a++) {
+
+            String last_row[] = new String[column];
+
+        
+            for (int b = 0; b &lt; column; b++) {
+                last_row[b] = matrix[row - 1][b];
+            }
+
+    
+            for (int c = row - 1; c &gt; 0; c--) {
+
+                for (int d = 0; d &lt; column; d++) {
+                    matrix[c][d] = matrix[c - 1][d];
+                }
+
+            }
+
+        
+            for (int i = 0; i &lt; column; i++) {
+                matrix[0][i] = last_row[i];
+            }
+
+        }
+
+    
+        for (int j = 0; j &lt; row; j++) {
+
+            System.out.print("| ");
+
+            for (int p = 0; p &lt; column; p++) {
+                System.out.print(matrix[j][p] + " | ");
+            }
+
+            System.out.println();
+
+        }
+
+        for (int k = 0; k &lt; row; k++) {
+
+            for (int m = 0; m &lt; column; m++) {
+</font>
+                if (matrix[k][m].equals("AA")) { 
+<a name="1"></a><font color="#00FF00"><a href="match210-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+                    return k + 1;
+                }
+
+            }
+        }
+
+       
+        return null;
+    }
+
+
+//  Task 3 
+
+
+
+class AssgnTask3{
+
+        public static Integer[][] compressMatrix( Integer[][] matrix ){
+
+        int row_o = matrix.length;
+</font>        int column_o = matrix[0].length;
+
+        int row_n = row_o / 2;
+        int column_n = column_o / 2;
+        Integer[][] result = new Integer[row_n][column_n];
+
+        int row_c = 0;
+
+        for (int a = 0; a &lt; row_o; a = a + 1 + 1) {
+
+            int column_c = 0;
+
+            for (int b = 0; b &lt; column_o; b = b + 1 + 1) {
+
+                int mat1 = matrix[a][b];
+                int mat2 = matrix[a][b + 1];
+                int mat3 = matrix[a + 1][b];
+                int mat4 = matrix[a + 1][b + 1];
+                int mat_sum = mat1 + mat2 + mat3 + mat4;
+                result[row_c][column_c] = mat_sum;
+
+                column_c = column_c + 1;
+            }
+
+            row_c =row_c + 1;
+
+        }
+
+        return result;
+        
+
+    }
+
+
+//  Task  4
+
+
+class AssgnTask4{
+
+   
+    public static void playGame( Integer[][] arena ){
+
+        int pts_a = 0;
+        int row_a = arena.length;
+        int column_a = arena[0].length;
+
+        for (int a = 0; a &lt; row_a; a++) {
+
+            for (int b = 0; b &lt; column_a; b++) {
+
+                int vl_a = arena[a][b];
+
+                if (vl_a != 0 &amp;&amp; vl_a % 50 == 0) {
+
+                    int ct_a = 0;
+
+                    if (a &gt; 0 &amp;&amp; arena[a - 1][b] == 2) {
+                        ct_a++;
+                    }
+                    if (a &lt; row_a - 1 &amp;&amp; arena[a + 1][b] == 2) {
+                        ct_a++;
+                    }
+                    if (b &gt; 0 &amp;&amp; arena[a][b - 1] == 2) {
+                        ct_a++;
+                    }
+                    if (b &lt; column_a - 1 &amp;&amp; arena[a][b + 1] == 2) {
+                        ct_a++;
+                    }
+
+                    pts_a += ct_a * 2;
+                }
+            }
+        }
+
+        System.out.print("Points Gained: " + pts_a + ". ");
+
+        if (pts_a &gt;= 10) {
+            System.out.println("Your team has survived the game.");
+        }
+        else {
+            System.out.println("Your team is out.");
+        }
+    
+    }</pre>
+</body>
+</html>

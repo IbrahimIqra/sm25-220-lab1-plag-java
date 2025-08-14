@@ -1,0 +1,255 @@
+<html>
+<head>
+<title>A1_Sec05_24101400_Mainul-Hasan-Jesan.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+[WRONG-TYPE]A1_Sec14_24101153_Mahruf-Al-Mahi.txt<p></p><pre>
+Problem 1 : 
+
+   
+       
+        public static int mostWater(int[] arr){
+
+<a name="7"></a><font color="#0000FF"><a href="match19-0.html#7" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_0.gif"/></a>
+
+            int water = 0;
+            int highest = 0;
+</font><a name="8"></a><font color="#00FFFF"><a href="match19-0.html#8" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_0.gif"/></a>
+
+            for(int i = 0; i &lt; arr.length; i++){
+</font><a name="2"></a><font color="#0000FF"><a href="match19-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_0.gif"/></a>
+
+
+                for(int j = 0; j &lt; arr.length; j++){
+</font>
+                    if(arr[i] == arr[j]){
+
+                        continue;
+                    }
+
+                    if(j &gt; i){
+
+<a name="4"></a><font color="#FF00FF"><a href="match19-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_0.gif"/></a>
+
+                        if(arr[i] &lt; arr[j]){
+
+                            water = arr[i] * (j-i);
+</font><a name="3"></a><font color="#00FFFF"><a href="match19-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_0.gif"/></a>
+
+                        }else{
+
+                            water = arr[j] * (j-i);
+</font>                        }
+<a name="6"></a><font color="#00FF00"><a href="match19-0.html#6" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_0.gif"/></a>
+
+                    }else{
+
+                        if(arr[i] &lt; arr[j]){
+</font><a name="5"></a><font color="#FF0000"><a href="match19-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_0.gif"/></a>
+
+
+                            water = arr[i] * (i-j);
+</font>                        }else{
+
+                            water = arr[j] * (i-j);
+                        }
+
+                    }
+
+                    if(water &gt; highest){
+
+<a name="1"></a><font color="#00FF00"><a href="match19-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_0.gif"/></a>
+
+                        highest = water;
+                    }
+</font>                }
+            }
+
+            return highest;
+        }
+       
+
+
+
+Problem 2 : 
+
+    
+
+
+             public static int linearsearch(String[][] arr){
+   
+<a name="10"></a><font color="#FF0000"><a href="match19-0.html#10" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_0.gif"/></a>
+
+                int foundinrow = 0;
+</font>                for(int i = 0; i &lt; arr.length; i++){
+   
+   
+                    for(int j = 0; j &lt; arr[i].length; j++){
+   
+   
+                    if(arr[i][j].equals("AA")){
+   
+   
+                        foundinrow = i;
+                    }
+                    }
+                }
+   
+   
+                return foundinrow;
+            }
+   
+   
+            public static void stepforward(String[][] arr, int week){
+   
+   
+                int currentrow = linearsearch(arr);
+                int rows = arr.length;
+                int columns = arr[0].length;
+                String[][] updatedarr = new String[rows][columns];
+   
+                int rowtobeswappedwith = (currentrow + week - 1) % arr.length;
+   
+   
+                for(int i = 0; i &lt; arr.length; i++){
+   
+   
+                 updatedarr[(i + 2) % arr.length] = arr[i];
+                   
+   
+   
+                }
+<a name="9"></a><font color="#FF00FF"><a href="match19-0.html#9" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_0.gif"/></a>
+
+   
+   
+        System.out.println(Arrays.deepToString(updatedarr));
+</font>                System.out.println("AA will be in row " + (rowtobeswappedwith + 1));
+            }
+          
+
+
+
+Problem 3 : 
+   
+    public static void compression(int[][] arr){
+       
+         if(arr.length != arr[0].length || arr.length % 2 != 0){
+           
+<a name="0"></a><font color="#FF0000"><a href="match19-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_0.gif"/></a>
+
+            System.out.println("invalid input");
+            return;
+</font>           
+        }
+       
+        int newarrrows = arr.length / 2;
+        int newarrcolumns = arr[0].length/2;
+        int[][] newarr = new int[newarrrows][newarrrows];
+
+        for(int i = 0; i &lt; arr.length; i += 2){
+           
+            for(int j = 0; j &lt; arr[0].length; j += 2){
+               
+                newarr[i/2][j/2] = arr[i][j] + arr[i][j+1] + arr[i+1][j] + arr[i+1][j+1];
+                 
+            }
+        }
+       
+        System.out.println(Arrays.deepToString(newarr));
+       
+       
+       
+    }
+   
+
+
+Problem 4:
+
+    
+          public static void countpoints(int[][] arr){
+           
+            int points = 0;
+            for(int i = 0; i &lt; arr.length; i++){
+               
+                for(int j= 0; j &lt; arr[i].length; j++){
+                   
+                    if(arr[i][j] % 50 == 0 &amp;&amp; arr[i][j] != 0){
+                       
+                        if(i == 0){
+                            if(arr[i+1][j] == 2){
+                               
+                                points += 2;
+                            }
+                           
+                        }else if(i == arr.length - 1){
+                           
+                            if(arr[i-1][j] == 2){
+                               
+                                points += 2;
+                            }
+                           
+                        }else{
+                           
+                            if(arr[i+1][j] == 2){
+                               
+                                points += 2;
+                            }
+                           
+                            if(arr[i-1][j] == 2){
+                               
+                                points += 2;
+                            }
+                           
+                           
+                        }
+                       
+                        if(j== 0){
+                            if(arr[i][j+1] == 2){
+                               
+                                points += 2;
+                            }
+                           
+                        }else if(j== arr[i].length - 1){
+                           
+                            if(arr[i][j-1]==2){
+                               
+                                points += 2;
+                            }
+                           
+                        }else{
+                           
+                            if(arr[i][j+1] == 2){
+                               
+                                points += 2;
+                            }
+                           
+                            if(arr[i][j-1]==2){
+                               
+                                points += 2;
+                            }
+                       
+                           
+                       
+                           
+                           
+                        }
+                    }
+                }
+            }
+           
+            if(points &lt; 10){
+               
+<a name="11"></a><font color="#00FF00"><a href="match19-0.html#11" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_0.gif"/></a>
+
+                System.out.println("Points Gained: "+ points + ". your team is out.");
+            }else{
+</font>               
+                System.out.println("Points Gained: "+points+ ". your team has survived the game.");
+            }
+        }
+       
+</pre>
+</body>
+</html>

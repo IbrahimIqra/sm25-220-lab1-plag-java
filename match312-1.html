@@ -1,0 +1,116 @@
+<html>
+<head>
+<title>A1_Sec17_24101062_H.M.-MIRAJUL-ISLAM.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec25_24110011_Nure-alam-Siddiquee-Zisan.txt<p></p><pre>
+#task1
+    public static void mostWater(Integer[] height) {
+        int max_water = 0;
+        int left_pointer = 0;
+        int right_pointer = height.length - 1;
+
+        while (left_pointer &lt; right_pointer) {
+            int width = right_pointer - left_pointer;
+            int h = Math.min(height[left_pointer], height[right_pointer]);
+            int current_water = width * h;
+<a name="3"></a><font color="#00FFFF"><a href="match312-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_6.gif"/></a>
+
+            max_water = Math.max(max_water, current_water);
+
+            if (height[left_pointer] &lt; height[right_pointer]) {
+                left_pointer++;
+            } else {
+                right_pointer--;
+            }
+        }
+
+        System.out.println(max_water);   
+ }
+#task2
+
+public static Integer rowRotation(Integer examWeek, String[][] matrix) {
+</font>    
+    examWeek=examWeek-1;//as we have to rotate the week given and then -1
+
+<a name="2"></a><font color="#0000FF"><a href="match312-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_11.gif"/></a>
+
+    int row = matrix.length;
+    for (int i = 0; i &lt; examWeek; i++) {
+        String[] lastr = matrix[row - 1]; 
+        for (int j = row - 1; j &gt; 0; j--) {
+            matrix[j] = matrix[j - 1];
+        }
+        matrix[0] = lastr;
+    }
+    for (int i = 0; i &lt; row; i++) {
+</font>        for (int j = 0; j &lt; matrix[0].length; j++) {
+            if (matrix[i][j].equals("AA")) {
+                return i + 1;
+            }
+        }
+    }
+    return -1;
+}
+
+#task3
+
+ public static int[][] compress_matrix(int[][] mat) {
+        int row = matrix.length;
+        int col = matrix[0].length;
+<a name="1"></a><font color="#00FF00"><a href="match312-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_18.gif"/></a>
+
+        int[][] compmetrix = new int[row / 2][col / 2]; //we have created the 2x2 new matrix
+
+        for (int i = 0; i &lt; rows; i += 2) {
+            for (int j = 0; j &lt; cols; j += 2) {
+                int sum = mat[i][j] + mat[i][j + 1] + mat[i + 1][j] + mat[i + 1][j + 1];//and here we evaluate all the value of one block as per question said
+                compmetrix[i / 2][j / 2] = sum;
+            }
+        }
+
+        return compmetrix;
+    }
+
+#task4
+
+public static void playGame(Integer[][] arena) {
+        int tpoints = 0;
+</font>        int row=arena.length;
+        int col=arena[0].length;
+
+        for (int i = 0; i &lt;arena.length; i++) {
+<a name="0"></a><font color="#FF0000"><a href="match312-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_20.gif"/></a>
+
+            for (int j = 0; j &lt;arena[0].length ; j++) {
+                if (arena[i][j] % 50 == 0 &amp;&amp; arena[i][j] != 0) {
+                    if (i-1 &gt;= 0 &amp;&amp; arena[i - 1][j] == 2) { //this condition will check the down site
+                        tpoints += 2;
+                    }
+                    if (i+1 &lt; row &amp;&amp; arena[i+1][j] == 2) { //this condition for up side
+                        totalPoints += 2;
+                    }
+                    if (j-1 &gt;= 0 &amp;&amp; arena[i][j-1] == 2) { //this one for left side
+                        tpoints += 2;
+                    }
+                    if(j+1&lt;col&amp;&amp; arena[i][j+1] == 2) { // and this one for right side
+                        tpoints += 2;
+</font>                    }
+                }
+            }
+        }
+
+        if(tpoints&lt;10) {
+    		System.out.println("Points Gained: "+tpoints+ ". Your team is out.");
+    	}
+    	else {
+    		System.out.println("Points Gained: "+tpoints+". Your team has survived the game.");
+}
+}
+
+
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>A1_Sec22_24301049_Tamzid-Nawfel.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec22_24301049_Tamzid-Nawfel.txt<p></p><pre>
+Task 01.
+
+
+public static void mostWater( Integer[] height ){
+
+        int area = 0;
+
+        for(int i=0; i&lt;height.length; i++){
+            for(int j=i+1; j&lt;height.length; j++){
+                int min_height = 0;
+                int width = j-i;
+                int temp_area = 0;
+                if(height[i]&gt;height[j]){
+                    min_height = height[j];
+                }
+                else{
+                    min_height = height[i];
+                }
+                temp_area = min_height*width;
+                if(temp_area&gt;area){
+                    area = temp_area;
+                }
+            }
+        }
+        System.out.println(area);
+
+    }
+
+Task 02.
+
+<a name="5"></a><font color="#FF0000"><a href="match231-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_4.gif"/></a>
+
+ public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+
+        int row = matrix.length;
+        int col = matrix[0].length;
+</font>
+<a name="2"></a><font color="#0000FF"><a href="match231-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_7.gif"/></a>
+
+        for(int i=1; i&lt;=examWeek; i++){
+
+            String [] temp = matrix[row-1];
+
+            for(int j=row-1; j&gt;0; j--){
+                matrix[j] = matrix[j-1];
+            }
+            matrix[0] = temp ;
+</font>
+        }
+
+<a name="6"></a><font color="#00FF00"><a href="match231-1.html#6" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_4.gif"/></a>
+
+        for(Integer i=0; i&lt;row; i++){
+            for(int j=0;j&lt;col; j++){
+                if(matrix[i][j].equals("AA")){
+</font>                    return i+1;
+                }
+            }
+        }
+    }
+
+Task 03
+
+public static Integer[][] compressMatrix( Integer[][] matrix ){
+
+    Integer [][] new_arr = new Integer [2][2];
+    int row = matrix.length;
+<a name="0"></a><font color="#FF0000"><a href="match231-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_14.gif"/></a>
+
+    int col = matrix[0].length;
+
+    
+    for(int i=0;i&lt;row;i+=2){
+        for(int j=0; j&lt;col; j+=2){
+            int temp = matrix[i][j]+matrix[i][j+1]+matrix[i+1][j]+matrix[i+1][j+1];
+            new_arr[i/2][j/2] = temp;
+        }
+    }
+    return new_arr;
+</font>
+    }
+
+
+Task 04.
+
+<a name="1"></a><font color="#00FF00"><a href="match231-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_14.gif"/></a>
+
+public static void playGame( Integer[][] arena ){
+
+        int sum = 0;
+        int row = arena.length;
+        int col = arena[0].length;
+
+        for(int i=0;i&lt;row;i++){
+            for(int j=0; j&lt;col; j++){
+                if(arena[i][j]%50==0 &amp;&amp; arena[i][j]!=0){
+                    if(j&gt;0 &amp;&amp; arena[i][j-1]==2){
+</font><a name="3"></a><font color="#00FFFF"><a href="match231-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_7.gif"/></a>
+
+                        sum+=2;
+                    }
+                    if(j&lt;col-1 &amp;&amp; arena[i][j+1]==2){
+                        sum+=2;
+                    }
+                    if(i&gt;0 &amp;&amp; arena[i-1][j]==2){
+</font><a name="4"></a><font color="#FF00FF"><a href="match231-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_7.gif"/></a>
+
+                        sum+=2;
+                    }
+                    if(i&lt;row-1 &amp;&amp; arena[i+1][j]==2){
+                        sum+=2;
+                    }
+                }
+            }
+        }
+        if(sum&gt;=10){
+</font>        System.out.print("Points Gained: "+sum);
+        System.out.print(". Your team has survived the game");
+        }
+        else{
+            System.out.print("Points Gained: "+sum);
+        System.out.print(". Your team is out");
+        }
+    }</pre>
+</body>
+</html>

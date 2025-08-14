@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>A1_Sec17_23101079_Kazi-Mushfikur-Rahaman.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec17_23101079_Kazi-Mushfikur-Rahaman.txt<p></p><pre>
+﻿Assignment Task 01:
+
+
+<a name="2"></a><font color="#0000FF"><a href="match56-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_13.gif"/></a>
+
+public static void mostWater( Integer[] height ){
+      int start = 0;
+      int end = height.length -1;
+      int bilay = 0;
+      
+      while (start&lt; end){
+        int temp;
+        if ( height[start]&lt; height[end]){
+          temp= height[start];
+        }else {
+          temp= height[end];
+        }
+        int width = end-start;
+        int area = temp * width;
+        if (area&gt; bilay){
+          bilay = area;
+        }
+        if ( height[start] &lt; height[end]){
+          start+=1;
+</font>        }else{
+          end--;
+        }
+      }
+      System.out.println(bilay);
+    }
+
+
+
+
+Assignment Task 02 :
+
+
+    public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+      int rows = matrix.length;
+      int col = matrix[0].length;
+      
+      for(int i=0; i&lt;examWeek-1; i++){
+        String[]temp = matrix[rows-1];
+        for(int j=rows-1; j&gt;0; j--){
+          matrix[j]= matrix[j-1];
+        }
+        matrix[0] = temp;
+      }
+      
+      for(int i=0; i&lt;rows; i++){
+        System.out.print("| ");
+        for(int j = 0; j &lt; col; j++){
+          System.out.print(matrix[i][j] + "  | ");
+        }
+        System.out.println();
+      }
+      
+      int bilAAy = 0;
+      for(int i=0; i&lt;rows; i++){
+        for(int j=0; j&lt;col; j++){
+          if (matrix[i][j].equals("AA")){
+            bilAAy = i+1;
+            break;
+          }
+        }
+      }
+      
+        return bilAAy;
+    }
+
+
+
+
+
+
+Assignment Task 03:
+
+
+
+
+<a name="1"></a><font color="#00FF00"><a href="match56-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_22.gif"/></a>
+
+    public static Integer[][] compressMatrix( Integer[][] matrix ){
+      int rows = matrix.length;
+      int col = matrix[0].length;
+      int nRows = rows/2;
+      int nCol = col/2;
+      
+      Integer[][]bilay = new Integer[nRows][nCol];
+      for(int i=0; i&lt;rows; i+=2){
+        for(int j=0; j&lt;col; j+=2){
+          int sum= matrix[i][j]+matrix[i][j+1]+matrix[i+1][j]+matrix[i+1][j+1];
+          bilay[i/2][j/2]=sum;
+        }
+      }
+
+
+
+
+        return bilay;
+    }
+
+
+
+
+Assignment Task 04:
+
+
+    public static void playGame( Integer[][] arena ){
+</font><a name="0"></a><font color="#FF0000"><a href="match56-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_23.gif"/></a>
+
+      int rows = arena.length;
+      int col = arena[0].length;
+      int bilay = 0;
+      for(int i=0; i&lt;rows; i++){
+        for(int j = 0; j&lt;col; j++){
+          if(arena[i][j]%50==0 &amp;&amp; arena[i][j] != 0){
+            int point = 0;
+            if ((i&gt;0 &amp;&amp; arena[i-1][j] == 2)){ //up
+              point++;
+            }
+            if ((i&lt;rows-1 &amp;&amp; arena[i+1][j] == 2)){ //down
+              point++;
+            }
+            if ((j&gt;0 &amp;&amp; arena[i][j-1] == 2)){ //left
+              point++;
+            }
+            if ((j&lt;col-1 &amp;&amp; arena[i][j+1] == 2)){ 
+              point++;
+            }
+            
+            bilay += point * 2;
+</font>          }
+        }
+      }
+      if(bilay&lt;10){
+        System.out.println("Points Gained: "+ bilay+". Your team is out.");
+      }else{
+        System.out.println("Points Gained: "+ bilay+". Your team has survived the game.");
+      }
+    }</pre>
+</body>
+</html>

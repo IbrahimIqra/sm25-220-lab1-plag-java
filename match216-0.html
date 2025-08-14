@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>A1_Sec11_24201381_MD.RIYAD.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec11_24201381_MD.RIYAD.txt<p></p><pre>
+Assignment 1
+
+public static void mostWater( Integer[] height ){
+  int maxArea=0;
+  int left=0;
+  int right=height.length-1;
+        
+  while(left&lt;right){
+    int crntHgt=Math.min(height[left],height[right]);
+    int crntWdh=right-left;
+    int crntArea=crntHgt*crntWdh;
+<a name="5"></a><font color="#FF0000"><a href="match216-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+    maxArea=Math.max(maxArea,crntArea);
+    if(height[left]&lt;height[right]){
+      left++;
+    }
+    else{
+      right--;
+    }
+  }
+  System.out.println(maxArea);
+</font>}
+
+Assignment 2
+public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+  int row=0;
+
+  for(int w=1;w&lt;examWeek;w++){  
+<a name="2"></a><font color="#0000FF"><a href="match216-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_11.gif"/></a>
+
+    String[]temp=matrix[matrix.length-1];
+    for(int i=matrix.length-1;i&gt;0;i--){
+      matrix[i]=matrix[i-1];
+    }
+    matrix[0]=temp;
+  }
+  for(int i=0;i&lt;matrix.length;i++){
+    System.out.print("| ");
+    for(int j=0;j&lt;matrix[0].length;j++){
+</font>      System.out.printf("%-2s | ", matrix[i][j]);//found no other method to match the given output
+    }
+    System.out.println();
+  }
+
+
+  for(int i=0;i&lt;matrix.length;i++){
+    for(int j=0;j&lt;matrix[0].length;j++){
+      if(matrix[i][j].equals("AA")){
+        row=i+1;
+      }
+    }
+  }
+  return row;
+}
+
+Assignment 3
+<a name="4"></a><font color="#FF00FF"><a href="match216-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+public static Integer[][] compressMatrix( Integer[][] matrix ){
+
+  int row=matrix.length;
+  int col=matrix[0].length;
+</font><a name="1"></a><font color="#00FF00"><a href="match216-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_13.gif"/></a>
+
+  Integer[][]cmprsd=new Integer[row/2][col/2];
+
+  for(int i=0;i&lt;row;i+=2){
+    for(int j=0;j&lt;col;j+=2){
+      int sum=matrix[i][j]+matrix[i][j+1]+matrix[i+1][j]+matrix[i+1][j+1];
+      cmprsd[i/2][j/2]=sum;
+    }
+  }
+  return cmprsd;
+</font>}
+
+Assignment 4
+<a name="3"></a><font color="#00FFFF"><a href="match216-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+  public static void playGame( Integer[][] arena ){
+    int totalPoints=0;
+
+    for(int i=0;i&lt;arena.length;i++){
+      for(int j=0;j&lt;arena[0].length;j++){
+</font><a name="0"></a><font color="#FF0000"><a href="match216-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_17.gif"/></a>
+
+        if(arena[i][j]%50==0 &amp;&amp; arena[i][j]!=0){
+          int points=0;
+          
+          if(i-1&gt;=0 &amp;&amp; arena[i-1][j]==2){
+            points+=2;
+          }
+          if(i+1&lt;arena.length &amp;&amp; arena[i+1][j]==2){
+            points+=2;
+          }
+          if(j-1&gt;=0 &amp;&amp; arena[i][j-1]==2){
+            points+=2;
+          }
+          if(j+1&lt;arena[0].length &amp;&amp; arena[i][j+1]==2){
+            points+=2;
+          }
+          totalPoints+=points;
+</font>        }
+      }
+    }
+    System.out.print("Points Gained: "+totalPoints+".");
+    if(totalPoints&gt;=10){
+      System.out.println("Your team has survived the game.");
+    }
+    else{
+      System.out.println("Your team is out.");
+    }
+  }</pre>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<html>
+<head>
+<title>A1_Sec11_24301525_Shahed-Amin.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec11_24301525_Shahed-Amin.txt<p></p><pre>
+// Assignment Task 1: 
+
+<a name="5"></a><font color="#FF0000"><a href="match234-1.html#5" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+    public static void mostWater( Integer[] height ){
+        
+        int leftBoundary = 0;
+        int rightBoundary = height.length - 1;
+        int maximumArea = 0;
+</font>
+        for (; leftBoundary &lt; rightBoundary;){ // While loop alternative
+            
+<a name="1"></a><font color="#00FF00"><a href="match234-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_10.gif"/></a>
+
+            int shortestHeight; 
+            
+            /* Need to compare the two boundaries and find the one with shorter height
+               and use it as the height for the area because otherwise the water will spill over */
+            
+            if (height[leftBoundary] &lt; height[rightBoundary]) {
+                shortestHeight = height[leftBoundary];
+            } else {
+                shortestHeight = height[rightBoundary];
+            }
+            
+            // Here I also could have used Math.min()
+
+            int width = rightBoundary - leftBoundary;
+            int area = shortestHeight * width;
+            
+            if (area &gt; maximumArea) {
+                maximumArea = area;
+            }
+            
+            /* We have to move the boundaries inward after each iteration. 
+               However, there is a catch we have to keep the larger boundary and eleminate the shorter one.
+               then move inwards from there. Because to find an even bigger area the shortest boundary must beceome larger */
+            
+            if (height[leftBoundary] &lt; height[rightBoundary]) {
+                leftBoundary++;
+            } else {
+                rightBoundary--;
+            }
+        }
+        System.out.println(maximumArea);
+</font>    }
+
+// Assignment Task 2: 
+
+<a name="4"></a><font color="#FF00FF"><a href="match234-1.html#4" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_4.gif"/></a>
+
+    public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+        
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+</font>        
+        int r = (examWeek + 1) % rows; 
+        /* added 1,
+         because expected output is based on a 1-based rotation
+         used modulo,
+         because it ensures that if the number of rotations is larger than the number of rows,
+         it wraps around like 7 rotations in a 6 row matrix is 1 rotation technically */
+        
+        Integer targetRow = null; // I will use it for retruning null if targer element is not found
+        
+        int maxWidth = Arr.findMaxWidth(matrix);
+        int tempRow = 1; // 1-based index
+        
+        // Firstly, I am thinking about printing from row r to the end as they will move up
+
+        for (int i = r; i &lt; rows; i++) {
+            System.out.print("| ");
+            for (int j = 0; j &lt; cols; j++) {
+                System.out.printf("%-" + maxWidth + "s | ", matrix[i][j]);
+                if (matrix[i][j].equals("AA")) {
+                    targetRow = tempRow;
+                }
+            }
+            System.out.println();
+            tempRow++;
+        }
+
+        // Finally, I will print from row 0 to row r-1
+
+        for (int i = 0; i &lt; r; i++) {
+            System.out.print("| ");
+            for (int j = 0; j &lt; cols; j++) {
+                System.out.printf("%-" + maxWidth + "s | ", matrix[i][j]);
+                if (matrix[i][j].equals("AA")) {
+                    targetRow = tempRow;
+                }
+            }
+            System.out.println();
+            tempRow++;
+        }
+        
+        return targetRow;
+    }
+
+// Assignment Task 3: 
+
+<a name="2"></a><font color="#0000FF"><a href="match234-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_9.gif"/></a>
+
+    public static Integer[][] compressMatrix( Integer[][] matrix ){
+        
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        // since every block is 2x2 and the new matrix will have half the rows and half the columns
+        int newRows = rows / 2; 
+        int newCols = cols / 2;
+        
+        Integer[][] compressed = new Integer[newRows][newCols];
+        
+        for (int i = 0; i &lt; newRows; i++) {
+</font>            for (int j = 0; j &lt; newCols; j++) {
+                // I have to calculate the top-left index of the current 2x2 block
+                int r = 2 * i; // compressed matrix is smaller and have half the rows and half the columns
+                int c = 2 * j;
+<a name="3"></a><font color="#00FFFF"><a href="match234-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_5.gif"/></a>
+
+                compressed[i][j] = matrix[r][c] + matrix[r][c + 1] + matrix[r + 1][c] + matrix[r + 1][c + 1];
+</font>            }
+        }
+        return compressed;
+    }
+
+// Assignment Task 4: 
+
+    public static void playGame( Integer[][] arena ){
+        
+        int rows = arena.length;
+        int cols = arena[0].length;
+        int totalPoints = 0;
+        
+        for (int i = 0; i &lt; rows; i++) {
+            for (int j = 0; j &lt; cols; j++) {
+                if (arena[i][j] != 0 &amp;&amp; arena[i][j] % 50 == 0) { 
+
+<a name="0"></a><font color="#FF0000"><a href="match234-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_18.gif"/></a>
+
+                    if (i - 1 &gt;= 0 &amp;&amp; arena[i - 1][j] == 2) {
+                        totalPoints += 2;
+                    }
+                    if (i + 1 &lt; rows &amp;&amp; arena[i + 1][j] == 2) {
+                        totalPoints += 2;
+                    }
+                    if (j - 1 &gt;= 0 &amp;&amp; arena[i][j - 1] == 2) {
+                        totalPoints += 2;
+                    }
+                    if (j + 1 &lt; cols &amp;&amp; arena[i][j + 1] == 2) {
+                        totalPoints += 2;
+                    }
+
+                }
+            }
+        }
+        // The inner conditions check for UP, DOWN, LEFT, RIGHT
+        // Player cell must be non-zero and multiple of 50
+        // Each if statement checks boundaries first so no way out of the matrix
+        // I was thinking about doing this problem with direction arrays, will try it later!
+        
+        System.out.print("Points Gained: " + totalPoints + ". ");
+        if (totalPoints &gt;= 10) {
+            System.out.println("Your team has survived the game.");
+        } else {
+            System.out.println("Your team is out.");
+</font>        }
+    }
+</pre>
+</body>
+</html>

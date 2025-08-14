@@ -1,0 +1,189 @@
+<html>
+<head>
+<title>A1_Sec21_24101361_Md.-Ashequer-Rahman-Tanfi.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec07_23201144_Fardin-Islam-kabyo.txt<p></p><pre>
+//Assignment Task 01: Container with Most Water
+class AssgnTask1{
+<a name="4"></a><font color="#FF00FF"><a href="match88-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_3.gif"/></a>
+
+    public static void mostWater( Integer[] height ){
+        int left = 0;
+        int right = height.length - 1;
+        int maxWater = 0;
+
+        while (left &lt; right) {
+            int currentHeight = Math.min(height[left], height[right]);
+</font>
+            int currentWidth = right - left;
+            
+            int currentWater = currentHeight * currentWidth;
+
+<a name="6"></a><font color="#00FF00"><a href="match88-0.html#6" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+            maxWater = Math.max(maxWater, currentWater);
+
+            if (height[left] &lt; height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        System.out.println(maxWater);
+</font>
+    }
+
+}
+
+//Assignment Task 02: Row Rotation Policy
+class AssgnTask2{
+
+    //Complete this method so that it gives the Expected Output
+    //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+<a name="0"></a><font color="#FF0000"><a href="match88-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_12.gif"/></a>
+
+    public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+        int numRows = matrix.length;
+        int numCols = matrix[0].length;
+
+        int rotations = (examWeek - 1) % numRows;
+
+        String[][] rotatedSeatStatus = new String[numRows][numCols];
+
+        for (int newRow = 0; newRow &lt; numRows; newRow++) {
+    
+            int originalRow = (newRow - rotations + numRows) % numRows;
+            for(int i=0; i&lt;numCols;i++){
+                rotatedSeatStatus[newRow][i]=matrix[originalRow][i];
+</font>            }
+        }
+
+        System.out.println("Output:");
+        for (int i = 0; i &lt; numRows; i++) {
+            System.out.print("|");
+            for (int j = 0; j &lt; numCols; j++) {
+                System.out.printf(" %-2s |", rotatedSeatStatus[i][j]);
+            }
+            System.out.println();
+        }
+        int finalrow = 0;
+<a name="5"></a><font color="#FF0000"><a href="match88-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+        for (int i = 0; i &lt; numRows; i++) {
+            for (int j = 0; j &lt; numCols; j++) {
+                if ("AA".equals(rotatedSeatStatus[i][j])) {
+</font>                    finalrow = i + 1; 
+                    break;
+                }
+            }
+            if (finalrow != 0) {
+                break;
+            }
+        }
+
+       return finalrow;
+    }
+
+   }
+
+//Assignment Task 03: Matrix Compression
+class AssgnTask3{
+
+    //Complete this method so that it gives the Expected Output
+    //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+<a name="1"></a><font color="#00FF00"><a href="match88-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_8.gif"/></a>
+
+    public static Integer[][] compressMatrix( Integer[][] matrix ){
+        int numRows = matrix.length;
+        int numCols = matrix[0].length; 
+        int compressedRows = numRows / 2;
+        int compressedCols = numCols / 2;
+        Integer[][] compressedMat = new Integer[compressedRows][compressedCols];
+
+        for (int i = 0; i &lt; numRows; i += 2) { 
+</font>            for (int j = 0; j &lt; numCols; j += 2) { 
+
+                int sum = matrix[i][j] +      
+                          matrix[i + 1][j] + 
+                          matrix[i][j + 1] + 
+<a name="7"></a><font color="#0000FF"><a href="match88-0.html#7" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+                          matrix[i + 1][j + 1]; 
+
+                compressedMat[i / 2][j / 2] = sum;
+            }
+        }
+
+        return compressedMat;
+</font>    }
+
+    public static void printMatrix(int[][] matrix) {
+        if (matrix == null || matrix.length == 0) {
+            System.out.println("[]");
+            return;
+        }
+        System.out.println("[");
+        for (int i = 0; i &lt; matrix.length; i++) {
+            System.out.print("  [");
+            for (int j = 0; j &lt; matrix[i].length; j++) {
+                System.out.printf("%4d", matrix[i][j]);
+                if (j &lt; matrix[i].length - 1) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println("]");
+        }
+        System.out.println("]");
+
+    }
+
+    }
+
+//Assignment Task 04: Game Arena
+class AssgnTask4{
+
+    public static void playGame( Integer[][] arena ){
+        int numRows = arena.length;
+        int numCols = arena[0].length;
+        int totalPoints = 0;
+
+<a name="2"></a><font color="#0000FF"><a href="match88-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_7.gif"/></a>
+
+        int[] dr = {-1, 1, 0, 0}; 
+        int[] dc = {0, 0, -1, 1}; 
+
+        for (int r = 0; r &lt; numRows; r++) {
+            for (int c = 0; c &lt; numCols; c++) {
+                int currentPlayerValue = arena[r][c];
+                if (currentPlayerValue == 50 || currentPlayerValue == 100 || currentPlayerValue == 200) {
+</font><a name="3"></a><font color="#00FFFF"><a href="match88-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_6.gif"/></a>
+
+                    for (int i = 0; i &lt; 4; i++) { 
+                        int nr = r + dr[i]; 
+                        int nc = c + dc[i]; 
+                        if (nr &gt;= 0 &amp;&amp; nr &lt; numRows &amp;&amp; nc &gt;= 0 &amp;&amp; nc &lt; numCols) {
+                            if (arena[nr][nc] == 2) {
+</font>                                totalPoints += 2; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        System.out.print("Points Gained: " + totalPoints + ". ");
+        if (totalPoints &gt;= 10) {
+            System.out.println("Your team has survived the game.");
+        } else {
+            System.out.println("Your team is out.");
+        }
+
+        
+    }
+
+   }</pre>
+</body>
+</html>

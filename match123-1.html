@@ -1,0 +1,211 @@
+<html>
+<head>
+<title>A1_Sec13_24101622_Shouharda-Dey.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A1_Sec14_24101412_K-M-Raiyan-Bin-Jaman.txt<p></p><pre>
+
+Task 1
+
+public class Task1 {
+
+    public static int total(int[] heights) {
+        int maxWater = 0;
+
+        for (int i = 0; i &lt; heights.length; i++) {
+            for (int j = i + 1; j &lt; heights.length; j++) {
+<a name="2"></a><font color="#0000FF"><a href="match123-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_4.gif"/></a>
+
+                int distance = j - i;
+                int minHeight;
+                if (heights[i] &lt; heights[j]) {
+                    minHeight = heights[i];
+                } else {
+                    minHeight = heights[j];
+                }
+                int currentWater = distance * minHeight;
+                if (currentWater &gt; maxWater) {
+                    maxWater = currentWater;
+</font>                }
+            }
+        }
+        
+        return maxWater;
+    }
+
+    public static void main(String[] args) {
+        int[] array = {1,8,6,2,5,4,8,3,7};
+        System.out.println("Max water: " + total(array));
+    }
+}
+
+Task 2
+
+public class Task3 {
+
+<a name="0"></a><font color="#FF0000"><a href="match123-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_7.gif"/></a>
+
+    public static int findAARow(int weeks, String[][] seats) {
+        int totalRows = seats.length;
+        int rotations = weeks - 1;
+
+        for (int i = 0; i &lt; rotations; i++) {
+            String[] last = seats[totalRows - 1];
+            for (int row = totalRows - 1; row &gt; 0; row--) {
+                seats[row] = seats[row - 1];
+            }
+            seats[0] = last;
+</font>        }
+        
+
+        System.out.println("New seating:");
+        for (int i = 0; i &lt; totalRows; i++) {
+            System.out.print("|");
+<a name="7"></a><font color="#0000FF"><a href="match123-0.html#7" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_2.gif"/></a>
+
+            for (int s = 0; s &lt; seats[i].length; s++) {
+                System.out.print(" " + seats[i][s] + " |");
+</font><a name="1"></a><font color="#00FF00"><a href="match123-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_5.gif"/></a>
+
+            }
+            System.out.println();
+        }
+        
+
+        for (int r = 0; r &lt; totalRows; r++) {
+            for (int s = 0; s &lt; seats[r].length; s++) {
+                if (seats[r][s].equals("AA")) {
+                    return r + 1;
+                }
+            }
+        }
+
+        return -1;
+    }
+
+
+public static void main(String[] args) {
+</font>        String[][] seats = {
+            {"A","B","C","D","E"},
+            {"F","G","H","I","J"},
+            {"K","L","M","N","O"},
+            {"P","Q","R","S","T"},
+            {"U","V","W","X","Y"},
+            {"Z","AA","BB","CC","DD"}
+        };
+
+        System.out.println("Starting seats:");
+        for (int r = 0; r &lt; seats.length; r++) {
+            System.out.print("|");
+            for (int s = 0; s &lt; seats[r].length; s++) {
+                System.out.print(" " + seats[r][s] + " |");
+            }
+            System.out.println();
+        }
+
+        int weeks = 3;
+        int aaRow = findAARow(weeks, seats);
+        System.out.println("AA is now in row: " + aaRow);
+    }
+}
+
+Task 3
+
+import java.util.Arrays;
+
+public class CompressionMatrix {
+
+    public static int[][] squeeze(int[][] mat) {
+        int n = mat.length / 2;
+        int[][] result = new int[n][n];
+        
+        for (int i = 0; i &lt; n * 2; i+=2) {  
+            for (int j = 0; j &lt; n * 2; j+=2) { 
+<a name="5"></a><font color="#FF0000"><a href="match123-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_3.gif"/></a>
+
+                result[i/2][j/2] = mat[i][j] + mat[i][j+1] 
+                                  + mat[i+1][j] + mat[i+1][j+1];
+</font>            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {1, 3, 5, 2},
+            {-2, 0, 6, -3}
+        };
+        
+        System.out.println("Original:");
+        System.out.println(Arrays.deepToString(matrix));
+        
+        System.out.println("Compressed:"); 
+        System.out.println(Arrays.deepToString(squeeze(matrix)));
+    }
+}
+Task 4:
+
+public class SimpleGame {
+    public static void main(String[] args) {
+        int[][] grid1 = {
+            {0, 2, 2, 0},
+            {50, 1, 2, 0},
+            {2, 2, 2, 0},
+            {1, 100, 2, 0}
+        };
+        checkPoints(grid1);
+        
+        int[][] grid2 = {
+            {0, 2, 2, 0, 2},
+            {1, 50, 2, 1, 100},
+            {2, 2, 2, 0, 2},
+            {0, 200, 2, 0, 0}
+        };
+        checkPoints(grid2);
+    }
+    
+    public static void checkPoints(int[][] grid) {
+<a name="4"></a><font color="#FF00FF"><a href="match123-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_3.gif"/></a>
+
+        int points = 0;
+        
+        for (int i = 0; i &lt; grid.length; i++) {
+            for (int j = 0; j &lt; grid[i].length; j++) {
+                if (grid[i][j] % 50 == 0 &amp;&amp; grid[i][j] != 0) {
+</font><a name="8"></a><font color="#00FFFF"><a href="match123-0.html#8" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_2.gif"/></a>
+
+                    if (i &gt; 0 &amp;&amp; grid[i-1][j] == 2) {
+                        points += 2;
+                    }
+                    if (i &lt; grid.length-1 &amp;&amp; grid[i+1][j] == 2) {
+</font><a name="3"></a><font color="#00FFFF"><a href="match123-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_4.gif"/></a>
+
+                        points += 2;
+                    }
+                    if (j &gt; 0 &amp;&amp; grid[i][j-1] == 2) {
+                        points += 2;
+                    }
+                    if (j &lt; grid[i].length-1 &amp;&amp; grid[i][j+1] == 2) {
+</font><a name="6"></a><font color="#00FF00"><a href="match123-0.html#6" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_2.gif"/></a>
+
+                        points += 2;
+                    }
+                }
+            }
+        }
+        
+        if (points &gt;= 10) {
+            System.out.println("Points Gained: " + points + ". Your team has survived the game.");
+</font>        } else {
+            System.out.println("Points Gained: " + points + ". Your team is out.");
+        }
+    }
+}
+
+
+</pre>
+</body>
+</html>
